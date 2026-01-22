@@ -1,0 +1,129 @@
+﻿<Page x:Class="Warith.Presentation.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Warith.Presentation"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
+      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:um="using:Uno.Material"
+      NavigationCacheMode="Required"
+      Background="{ThemeResource BackgroundBrush}">
+    <ScrollViewer>
+        <StackPanel Padding="20" Spacing="15">
+
+            <!-- Gender Selection -->
+            <TextBlock Text="Gender" FontSize="20" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <RadioButton Content="Female" GroupName="Gender" Tag="ontha" x:Name="FemaleRadio"/>
+                <RadioButton Content="Male" GroupName="Gender" Tag="zakar" x:Name="MaleRadio" IsChecked="True"/>
+            </StackPanel>
+
+            <!-- Debts and Total Amount -->
+            <TextBlock Text="Debt?" FontWeight="SemiBold"/>
+            <TextBox x:Name="DebtInput" PlaceholderText="Enter debts"/>
+
+            <TextBlock Text="Total Amount?" FontWeight="SemiBold"/>
+            <TextBox x:Name="TotalAmountInput" PlaceholderText="Enter total money"/>
+
+            <!-- Will Inputs -->
+            <TextBlock Text="Will(s)" FontSize="20" FontWeight="Bold"/>
+            <Grid ColumnSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- ComboBox -->
+                <AutoSuggestBox Grid.Column="0"
+                    Header="First will"
+                    ItemsSource="{Binding Wills}"
+                    PlaceholderText="Choose or type (e.g. 1/3)"
+                    Text="{Binding Inheritance.Will1, Mode=TwoWay}" />
+
+                <AutoSuggestBox Grid.Column="1"
+                    Header="Second will"
+                    ItemsSource="{Binding Wills}"
+                    PlaceholderText="Choose or type (e.g. 1/3)"
+                    Text="{Binding Inheritance.Will2, Mode=TwoWay}" />
+
+                <AutoSuggestBox Grid.Column="2"
+                    Header="Third will"
+                    ItemsSource="{Binding Wills}"
+                    PlaceholderText="Choose or type (e.g. 1/3)"
+                    Text="{Binding Inheritance.Will3, Mode=TwoWay}" />
+            </Grid>
+
+
+            <TextBlock Text="Do heirs accept will more than 1/3?" FontWeight="SemiBold"/>
+            <ComboBox x:Name="AcceptWillCombo">
+                <ComboBoxItem Content="No" Tag="0" IsSelected="True"/>
+                <ComboBoxItem Content="Yes" Tag="1"/>
+            </ComboBox>
+
+            <!-- Spouse Selection -->
+            <TextBlock Text="Spouse(s)" FontSize="20" FontWeight="Bold"/>
+            <ComboBox x:Name="SpousesCountCombo">
+                <ComboBoxItem Content="No" Tag="0" IsSelected="True"/>
+                <ComboBoxItem Content="1" Tag="1"/>
+                <ComboBoxItem Content="2" Tag="2"/>
+                <ComboBoxItem Content="3" Tag="3"/>
+                <ComboBoxItem Content="4" Tag="4"/>
+            </ComboBox>
+
+            <!-- Parents -->
+            <TextBlock Text="Parents Alive?" FontSize="20" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <StackPanel>
+                    <TextBlock Text="Mother"/>
+                    <ComboBox x:Name="MotherAliveCombo">
+                        <ComboBoxItem Content="No" Tag="no" IsSelected="True"/>
+                        <ComboBoxItem Content="Yes" Tag="yes"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Father"/>
+                    <ComboBox x:Name="FatherAliveCombo">
+                        <ComboBoxItem Content="No" Tag="no" IsSelected="True"/>
+                        <ComboBoxItem Content="Yes" Tag="yes"/>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Children Example -->
+            <TextBlock Text="Children" FontSize="20" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <StackPanel>
+                    <TextBlock Text="Son"/>
+                    <ComboBox x:Name="SonCombo">
+                        <ComboBoxItem Content="No" Tag="no" IsSelected="True"/>
+                        <ComboBoxItem Content="1" Tag="1"/>
+                        <ComboBoxItem Content="2" Tag="2"/>
+                        <ComboBoxItem Content="3" Tag="3"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Daughter"/>
+                    <ComboBox x:Name="DaughterCombo">
+                        <ComboBoxItem Content="No" Tag="no" IsSelected="True"/>
+                        <ComboBoxItem Content="1" Tag="1"/>
+                        <ComboBoxItem Content="2" Tag="2"/>
+                        <ComboBoxItem Content="3" Tag="3"/>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- School / Law -->
+            <TextBlock Text="School or Law" FontSize="20" FontWeight="Bold"/>
+            <StackPanel Orientation="Vertical" Spacing="5">
+                <RadioButton Content="Majority" GroupName="School" Tag="gm" IsChecked="True"/>
+                <RadioButton Content="Hanafi" GroupName="School" Tag="nf"/>
+                <RadioButton Content="Maliki" GroupName="School" Tag="mk"/>
+                <RadioButton Content="Shafi" GroupName="School" Tag="sh"/>
+                <RadioButton Content="Hanbali" GroupName="School" Tag="bl"/>
+            </StackPanel>
+
+            <!-- Submit Button -->
+            <Button Content="Calculate Inheritance" x:Name="CalculateButton"
+                Background="#d5a569" Foreground="White" FontSize="18" Padding="10"/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
