@@ -7,257 +7,649 @@
       xmlns:um="using:Uno.Material"
       NavigationCacheMode="Required"
       Background="{ThemeResource BackgroundBrush}">
+    
     <ScrollViewer>
-        <StackPanel Padding="20" Spacing="10">
+        <StackPanel x:Name="MainContainer" Padding="10,10,10,10" Spacing="15" MaxWidth="1200">
 
-            <!-- Gender -->
-            <TextBlock Text="Gender" FontSize="20" FontWeight="Bold"/>
-            <StackPanel Orientation="Horizontal" Spacing="20">
-                <RadioButton Content="Female" GroupName="gender" x:Name="lll"
-                             IsChecked="{Binding gender, Mode=TwoWay, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ontha}"/>
-                <RadioButton Content="Male" GroupName="gender" x:Name="kj"
-                             IsChecked="{Binding gender, Mode=TwoWay, Converter={StaticResource StringToBoolConverter}, ConverterParameter=zakar}"/>
-            </StackPanel>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="AdaptiveStates">
+                    <VisualState x:Name="NarrowState">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0"/>
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="MainContainer.Padding" Value="10"/>
+                            <!-- Debt and Amount fields -->
+                            <Setter Target="DebtAmountPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="DebtPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="AmountPanel.Orientation" Value="Vertical"/>
+                            <!-- Make will fields stack vertically on narrow screens - REMOVED for Always One Row -->
+                            <!-- <Setter Target="WillsPanel.Orientation" Value="Vertical"/> -->
+                            <!-- <Setter Target="WillsPanel.Spacing" Value="10"/> -->
+                            
+                            <!-- Make each will field pair stack vertically -->
+                            <Setter Target="Will1Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="Will2Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="Will3Panel.Orientation" Value="Vertical"/>
+                            <!-- Spouse fields -->
+                            <Setter Target="SpousePanel.Orientation" Value="Vertical"/>
+                            <Setter Target="WifePanel.Orientation" Value="Vertical"/>
+                            <Setter Target="HusbandPanel.Orientation" Value="Vertical"/>
+                            <!-- Parents fields -->
+                            <Setter Target="ParentsPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="MotherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="FatherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Grandparents1Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="MomMomPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="DadDadPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Grandparents2Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="DadDadDadPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Grandparents3Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="MomMomMomPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="MomDadPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Grandparents4Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="MomDadDadPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="MomMomDadPanel.Orientation" Value="Vertical"/>
+                            <!-- Children fields -->
+                            <Setter Target="Row1Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="DaughterPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row2Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfSonPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="DaughterOfSonPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row3Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfSonOfSonPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="DaughterOfSonOfSonPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row4Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="FullBrotherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="FullSisterPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row5Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="PaternalBrotherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="PaternalSisterPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row6Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="UterineBrotherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="UterineSisterPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row7Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfFullBrotherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfPaternalBrotherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row8Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfSonOfFullBrotherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfSonOfPaternalBrotherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row9Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="FullBrotherOfFatherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="PaternalBrotherOfFatherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row10Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfFullBrotherOfFatherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfPaternalBrotherOfFatherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row11Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfSonOfFullBrotherOfFatherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfSonOfPaternalBrotherOfFatherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row12Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="FullBrotherOfGrandFatherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="PaternalBrotherOfGrandFatherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="Row13Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfFullBrotherOfGrandFatherPanel.Orientation" Value="Vertical"/>
+                            <Setter Target="SonOfPaternalBrotherOfGrandFatherPanel.Orientation" Value="Vertical"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="WideState">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="600"/>
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="MainContainer.Padding" Value="20"/>
+                            <!-- Debt and Amount fields -->
+                            <Setter Target="DebtAmountPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="DebtPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="AmountPanel.Orientation" Value="Horizontal"/>
+                            <!-- <Setter Target="WillsPanel.Orientation" Value="Horizontal"/> -->
+                            <!-- <Setter Target="WillsPanel.Spacing" Value="15"/> -->
+                            <Setter Target="Will1Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Will2Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Will3Panel.Orientation" Value="Horizontal"/>
+                            <!-- Spouse fields -->
+                            <Setter Target="SpousePanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="WifePanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="HusbandPanel.Orientation" Value="Horizontal"/>
+                            <!-- Parents fields -->
+                            <Setter Target="ParentsPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="MotherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="FatherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Grandparents1Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="MomMomPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="DadDadPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Grandparents2Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="DadDadDadPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Grandparents3Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="MomMomMomPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="MomDadPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Grandparents4Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="MomDadDadPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="MomMomDadPanel.Orientation" Value="Horizontal"/>
+                            <!-- Children fields -->
+                            <Setter Target="Row1Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="DaughterPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row2Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfSonPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="DaughterOfSonPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row3Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfSonOfSonPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="DaughterOfSonOfSonPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row4Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="FullBrotherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="FullSisterPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row5Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="PaternalBrotherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="PaternalSisterPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row6Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="UterineBrotherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="UterineSisterPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row7Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfFullBrotherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfPaternalBrotherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row8Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfSonOfFullBrotherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfSonOfPaternalBrotherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row9Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="FullBrotherOfFatherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="PaternalBrotherOfFatherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row10Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfFullBrotherOfFatherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfPaternalBrotherOfFatherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row11Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfSonOfFullBrotherOfFatherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfSonOfPaternalBrotherOfFatherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row12Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="FullBrotherOfGrandFatherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="PaternalBrotherOfGrandFatherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="Row13Panel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfFullBrotherOfGrandFatherPanel.Orientation" Value="Horizontal"/>
+                            <Setter Target="SonOfPaternalBrotherOfGrandFatherPanel.Orientation" Value="Horizontal"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
 
-            <!-- Debt & Total amount -->
-            <StackPanel Orientation="Horizontal" Spacing="20">
-                <StackPanel>
-                    <TextBox x:Name="dyoon" Text="{Binding dyoon, Mode=TwoWay}" PlaceholderText="Debt?"/>
-                    <TextBlock Text="Debt?" FontSize="12"/>
+            <!-- Gender Selection -->
+            <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="15">
+                <StackPanel Spacing="10">
+                    <!-- Gender -->
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Gender" FontWeight="Bold" VerticalAlignment="Center" MinWidth="100"/>
+                        <RadioButton x:Name="lll" Content="Female" GroupName="gender"/>
+                        <RadioButton x:Name="kj" Content="Male" GroupName="gender" IsChecked="True"/>
+                    </StackPanel>
+
+                    <!-- Debt and Total Amount -->
+                    <StackPanel x:Name="DebtAmountPanel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="AmountPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Total amount?" VerticalAlignment="Center" MinWidth="100"/>
+                            <TextBox x:Name="floos" HorizontalAlignment="Stretch" MinWidth="150" InputScope="Number" BeforeTextChanging="OnNumberOnlyBeforeTextChanging"/>
+                        </StackPanel>
+                        <StackPanel x:Name="DebtPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Debt?" VerticalAlignment="Center" MinWidth="80"/>
+                            <TextBox x:Name="dyoon" MinWidth="150" HorizontalAlignment="Stretch" InputScope="Number" BeforeTextChanging="OnNumberOnlyBeforeTextChanging"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Will Fields - All in one row with labels on left -->
+                    <!-- Will Fields - All in one row with labels on left -->
+                    <Grid x:Name="WillsPanel" ColumnSpacing="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel x:Name="Will1Panel" Grid.Column="0" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Will?" VerticalAlignment="Center" MinWidth="60"/>
+                            <AutoSuggestBox x:Name="eradyya1" HorizontalAlignment="Stretch" PlaceholderText="1/3" TextChanged="OnWillTextChanged"/>
+                        </StackPanel>
+                        <StackPanel x:Name="Will2Panel" Grid.Column="1" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="second will?" VerticalAlignment="Center" MinWidth="80"/>
+                            <AutoSuggestBox x:Name="eradyya2" HorizontalAlignment="Stretch" PlaceholderText="1/4" TextChanged="OnWillTextChanged"/>
+                        </StackPanel>
+                        <StackPanel x:Name="Will3Panel" Grid.Column="2" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="third will?" VerticalAlignment="Center" MinWidth="70"/>
+                            <AutoSuggestBox x:Name="eradyya3" HorizontalAlignment="Stretch" PlaceholderText="1/5" TextChanged="OnWillTextChanged"/>
+                        </StackPanel>
+                    </Grid>
+                    <TextBlock Text="(ex: 1/3, 1/4, etc.)" Foreground="Gray" FontSize="11" FontStyle="Italic"/>
+
+                    <!-- Accept Will More Than 1/3 -->
+                    <StackPanel x:Name="egaza" Orientation="Horizontal" Spacing="10" Visibility="Collapsed">
+                        <TextBlock Text="Do heirs accept will more than 1/3?" Foreground="Green" FontSize="16" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        <ComboBox x:Name="agazo" SelectedIndex="0" MinWidth="80">
+                            <ComboBoxItem Content="No"/>
+                            <ComboBoxItem Content="Yes"/>
+                        </ComboBox>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel>
-                    <TextBox x:Name="floos" Text="{Binding floos, Mode=TwoWay}" PlaceholderText="Total amount?"/>
-                    <TextBlock Text="Total amount?" FontSize="12"/>
+            </Border>
+
+            <!-- Spouses and Parents -->
+            <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="15">
+                <StackPanel Spacing="10">
+                    <!-- Spouse Row -->
+                    <StackPanel x:Name="SpousePanel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="WifePanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock x:Name="m41" Text="Is Wife alive?" VerticalAlignment="Center" MinWidth="100"/>
+                            <ComboBox x:Name="zawgat" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="1"/>
+                                <ComboBoxItem Content="2"/>
+                                <ComboBoxItem Content="3"/>
+                                <ComboBoxItem Content="4"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="HusbandPanel" Orientation="Horizontal" Spacing="5" Visibility="Collapsed">
+                            <TextBlock x:Name="u41" Text="Is Husband alive?" VerticalAlignment="Center" MinWidth="120"/>
+                            <ComboBox x:Name="zawg1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150" Visibility="Collapsed">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="Yes"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Parents -->
+                    <StackPanel x:Name="ParentsPanel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="MotherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Is Mother alive?" VerticalAlignment="Center" MinWidth="100"/>
+                            <ComboBox x:Name="om1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="Yes"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="FatherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Is Father alive?" VerticalAlignment="Center" MinWidth="100"/>
+                            <ComboBox x:Name="ab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="Yes"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Grandparents Row 1 -->
+                    <StackPanel x:Name="Grandparents1Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="MomMomPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Mother of Mother?" VerticalAlignment="Center" MinWidth="120"/>
+                            <ComboBox x:Name="omom1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="Yes"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="DadDadPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Father of Father?" VerticalAlignment="Center" MinWidth="120"/>
+                            <ComboBox x:Name="abab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="Yes"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Grandparents Row 2 -->
+                    <StackPanel x:Name="Grandparents2Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="DadDadDadPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Father of Father of Father?" VerticalAlignment="Center" MinWidth="160"/>
+                            <ComboBox x:Name="ababab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="Yes"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Grandparents Row 3 -->
+                    <StackPanel x:Name="Grandparents3Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="MomMomMomPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Mother of mother of mother?" VerticalAlignment="Center" MinWidth="160"/>
+                            <ComboBox x:Name="omomom1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="Yes"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="MomDadPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Mother of Father?" VerticalAlignment="Center" MinWidth="120"/>
+                            <ComboBox x:Name="omab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="Yes"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Grandparents Row 4 -->
+                    <StackPanel x:Name="Grandparents4Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="MomDadDadPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Mother of father of father?" VerticalAlignment="Center" MinWidth="160"/>
+                            <ComboBox x:Name="omabab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="Yes"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="MomMomDadPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Mother of mother of father?" VerticalAlignment="Center" MinWidth="160"/>
+                            <ComboBox x:Name="omabab2" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="Yes"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
+            </Border>
 
-            <!-- Wills -->
-            <TextBlock Text="Will?" FontWeight="Bold"/>
-            <StackPanel Orientation="Horizontal" Spacing="10" Width="100">
-                <ComboBox x:Name="eradyya1" ItemsSource="{Binding Wills}" Text="{Binding Inheritance.Will1, Mode=TwoWay}" Width="80"/>
-                <ComboBox x:Name="eradyya2" ItemsSource="{Binding Wills}" Text="{Binding Inheritance.Will2, Mode=TwoWay}" Width="80"/>
-                <ComboBox x:Name="eradyya3" ItemsSource="{Binding Wills}" Text="{Binding Inheritance.Will3, Mode=TwoWay}" Width="80"/>
-            </StackPanel>
-            <TextBlock Text="ex: 1/3 , 1/4 etc »»" FontSize="12" Foreground="Gray"/>
+            <!-- Children and Relatives (s1-s26) -->
+            <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="15">
+                <StackPanel Spacing="5">
+                    <!-- Row 1: Son and Daughter -->
+                    <StackPanel x:Name="Row1Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="SonPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son?" VerticalAlignment="Center" MinWidth="100"/>
+                            <ComboBox x:Name="s1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="DaughterPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Daughter?" VerticalAlignment="Center" MinWidth="100"/>
+                            <ComboBox x:Name="s2" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                                <ComboBoxItem Content="1"/><ComboBoxItem Content="2"/><ComboBoxItem Content="3"/><ComboBoxItem Content="4"/><ComboBoxItem Content="5"/>
+                                <ComboBoxItem Content="6"/><ComboBoxItem Content="7"/><ComboBoxItem Content="8"/><ComboBoxItem Content="9"/><ComboBoxItem Content="10"/>
+                                <ComboBoxItem Content="11"/><ComboBoxItem Content="12"/><ComboBoxItem Content="13"/><ComboBoxItem Content="14"/><ComboBoxItem Content="15"/>
+                                <ComboBoxItem Content="16"/><ComboBoxItem Content="17"/><ComboBoxItem Content="18"/><ComboBoxItem Content="19"/><ComboBoxItem Content="20"/>
+                                <ComboBoxItem Content="21"/><ComboBoxItem Content="22"/><ComboBoxItem Content="23"/><ComboBoxItem Content="24"/><ComboBoxItem Content="25"/>
+                                <ComboBoxItem Content="26"/><ComboBoxItem Content="27"/><ComboBoxItem Content="28"/><ComboBoxItem Content="29"/><ComboBoxItem Content="30"/>
+                                <ComboBoxItem Content="31"/><ComboBoxItem Content="32"/><ComboBoxItem Content="33"/><ComboBoxItem Content="34"/><ComboBoxItem Content="35"/>
+                                <ComboBoxItem Content="36"/><ComboBoxItem Content="37"/><ComboBoxItem Content="38"/><ComboBoxItem Content="39"/><ComboBoxItem Content="40"/>
+                                <ComboBoxItem Content="41"/><ComboBoxItem Content="42"/><ComboBoxItem Content="43"/><ComboBoxItem Content="44"/><ComboBoxItem Content="45"/>
+                                <ComboBoxItem Content="46"/><ComboBoxItem Content="47"/><ComboBoxItem Content="48"/><ComboBoxItem Content="49"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
 
-            <!-- Accept will more than 1/3 -->
-            <StackPanel Orientation="Horizontal" Spacing="10">
-                <TextBlock Text="Do heirs accept will more than 1/3?" Foreground="Green" Visibility="{Binding ShowEgaza, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                <ComboBox x:Name="agazo" SelectedIndex="{Binding agazo}" Width="60">
-                    <ComboBoxItem Content="No" />
-                    <ComboBoxItem Content="Yes" />
-                </ComboBox>
-            </StackPanel>
+                    <!-- Row 2: Son of Son and Daughter of Son -->
+                    <StackPanel x:Name="Row2Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="SonOfSonPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of Son?" VerticalAlignment="Center" MinWidth="100"/>
+                            <ComboBox x:Name="s3" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="DaughterOfSonPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Daughter of Son?" VerticalAlignment="Center" MinWidth="140"/>
+                            <ComboBox x:Name="s4" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
 
-            <!-- Spouses -->
-            <StackPanel Orientation="Horizontal" Spacing="20">
-                <TextBlock Text="Spouses:"/>
-                <ComboBox x:Name="zawgat" SelectedValue="{Binding zawgat}">
-                    <ComboBoxItem Content="No" />
-                    <ComboBoxItem Content="1"/>
-                    <ComboBoxItem Content="2"/>
-                    <ComboBoxItem Content="3"/>
-                    <ComboBoxItem Content="4"/>
-                </ComboBox>
-            </StackPanel>
+                    <!-- Row 3: Son of son of son and Daughter of son of son -->
+                    <StackPanel x:Name="Row3Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="SonOfSonOfSonPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of son of son?" VerticalAlignment="Center" MinWidth="140"/>
+                            <ComboBox x:Name="s5" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="DaughterOfSonOfSonPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Daughter of son of son?" VerticalAlignment="Center" MinWidth="180"/>
+                            <ComboBox x:Name="s6" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
 
-            <!-- Husband/Wife alive -->
-            <StackPanel Orientation="Horizontal" Spacing="20">
-                <StackPanel>
-                    <TextBlock Text="Is Husband alive?" />
-                    <ComboBox x:Name="u41" SelectedValue="{Binding u41}">
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="Yes"/>
-                    </ComboBox>
+                    <!-- Row 4: Full Brother and Full Sister -->
+                    <StackPanel x:Name="Row4Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="FullBrotherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Full Brother?" VerticalAlignment="Center" MinWidth="100"/>
+                            <ComboBox x:Name="s7" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="FullSisterPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Full Sister?" VerticalAlignment="Center" MinWidth="100"/>
+                            <ComboBox x:Name="s8" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Row 5: Paternal Brother and Paternal Sister -->
+                    <StackPanel x:Name="Row5Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="PaternalBrotherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Paternal Brother?" VerticalAlignment="Center" MinWidth="120"/>
+                            <ComboBox x:Name="s9" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="PaternalSisterPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Paternal Sister?" VerticalAlignment="Center" MinWidth="120"/>
+                            <ComboBox x:Name="s10" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Row 6: Uterine Brother and Uterine Sister -->
+                    <StackPanel x:Name="Row6Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="UterineBrotherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Uterine Brother?" VerticalAlignment="Center" MinWidth="120"/>
+                            <ComboBox x:Name="s11" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="UterineSisterPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Uterine Sister?" VerticalAlignment="Center" MinWidth="120"/>
+                            <ComboBox x:Name="s12" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Row 7: Son of Full Brother and Son of Paternal Brother -->
+                    <StackPanel x:Name="Row7Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="SonOfFullBrotherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of Full Brother?" VerticalAlignment="Center" MinWidth="140"/>
+                            <ComboBox x:Name="s13" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="SonOfPaternalBrotherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of Paternal Brother?" VerticalAlignment="Center" MinWidth="160"/>
+                            <ComboBox x:Name="s14" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Row 8: Son of son of Full Brother and Son of son of Paternal Brother -->
+                    <StackPanel x:Name="Row8Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="SonOfSonOfFullBrotherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of son of Full Brother?" VerticalAlignment="Center" MinWidth="180"/>
+                            <ComboBox x:Name="s15" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="SonOfSonOfPaternalBrotherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of son of Paternal Brother?" VerticalAlignment="Center" MinWidth="200"/>
+                            <ComboBox x:Name="s16" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Row 9: Full Brother of Father and Paternal Brother of Father -->
+                    <StackPanel x:Name="Row9Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="FullBrotherOfFatherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Full Brother of Father?" VerticalAlignment="Center" MinWidth="160"/>
+                            <ComboBox x:Name="s17" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="PaternalBrotherOfFatherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Paternal Brother of Father?" VerticalAlignment="Center" MinWidth="180"/>
+                            <ComboBox x:Name="s18" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Row 10: Son of Full Brother of Father and Son of Paternal Brother of Father -->
+                    <StackPanel x:Name="Row10Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="SonOfFullBrotherOfFatherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of Full Brother of Father?" VerticalAlignment="Center" MinWidth="200"/>
+                            <ComboBox x:Name="s19" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="SonOfPaternalBrotherOfFatherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of Paternal Brother of Father?" VerticalAlignment="Center" MinWidth="220"/>
+                            <ComboBox x:Name="s20" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Row 11: Son of Son of Full Brother of Father and Son of Son of Paternal Brother of Father -->
+                    <StackPanel x:Name="Row11Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="SonOfSonOfFullBrotherOfFatherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of Son of Full Brother of Father?" VerticalAlignment="Center" MinWidth="220"/>
+                            <ComboBox x:Name="s21" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="SonOfSonOfPaternalBrotherOfFatherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of Son of Paternal Brother of Father?" VerticalAlignment="Center" MinWidth="240"/>
+                            <ComboBox x:Name="s22" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Row 12: Full brother of Grand Father and Paternal Brother of Grand Father -->
+                    <StackPanel x:Name="Row12Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="FullBrotherOfGrandFatherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Full brother of Grand Father?" VerticalAlignment="Center" MinWidth="180"/>
+                            <ComboBox x:Name="s23" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="PaternalBrotherOfGrandFatherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Paternal Brother of Grand Father?" VerticalAlignment="Center" MinWidth="200"/>
+                            <ComboBox x:Name="s24" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Row 13: Son of Full brother of Grand Father and Son of Paternal Brother of Grand Father -->
+                    <StackPanel x:Name="Row13Panel" Orientation="Horizontal" Spacing="15">
+                        <StackPanel x:Name="SonOfFullBrotherOfGrandFatherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of Full brother of Grand Father?" VerticalAlignment="Center" MinWidth="220"/>
+                            <ComboBox x:Name="s25" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel x:Name="SonOfPaternalBrotherOfGrandFatherPanel" Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="Son of Paternal Brother of Grand Father?" VerticalAlignment="Center" MinWidth="240"/>
+                            <ComboBox x:Name="s26" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150">
+                                <ComboBoxItem Content="No"/>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel>
-                    <TextBlock Text="Is Wife alive?" />
-                    <ComboBox x:Name="u43" SelectedValue="{Binding u43}">
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="Yes"/>
-                    </ComboBox>
-                </StackPanel>
-            </StackPanel>
+            </Border>
 
-            <!-- Parents -->
-            <StackPanel Orientation="Horizontal" Spacing="20">
-                <StackPanel>
-                    <TextBlock Text="Is Mother alive?"/>
-                    <ComboBox x:Name="om1" SelectedValue="{Binding om1}">
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="Yes"/>
-                    </ComboBox>
-                </StackPanel>
-                <StackPanel>
-                    <TextBlock Text="Is Father alive?"/>
-                    <ComboBox x:Name="ab1" SelectedValue="{Binding ab1}">
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="Yes"/>
-                    </ComboBox>
-                </StackPanel>
-            </StackPanel>
-
-            <!-- Ancestors -->
-            <StackPanel Orientation="Vertical" Spacing="10">
-                <StackPanel Orientation="Horizontal" Spacing="20">
-                    <TextBlock Text="Mother of Mother?"/>
-                    <ComboBox x:Name="omom1" SelectedValue="{Binding omom1}">
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="Yes"/>
-                    </ComboBox>
-
-                    <TextBlock Text="Father of Father?"/>
-                    <ComboBox x:Name="abab1" SelectedValue="{Binding abab1}">
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="Yes"/>
-                    </ComboBox>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Spacing="20">
-                    <TextBlock Text="Father of Father of Father?"/>
-                    <ComboBox x:Name="ababab1" SelectedValue="{Binding ababab1}">
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="Yes"/>
-                    </ComboBox>
-
-                    <TextBlock Text="Mother of Mother of Mother?"/>
-                    <ComboBox x:Name="omomom1" SelectedValue="{Binding omomom1}">
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="Yes"/>
-                    </ComboBox>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Spacing="20">
-                    <TextBlock Text="Mother of Father?"/>
-                    <ComboBox x:Name="omab1" SelectedValue="{Binding omab1}">
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="Yes"/>
-                    </ComboBox>
-
-                    <TextBlock Text="Mother of Father of Father?"/>
-                    <ComboBox x:Name="omabab1" SelectedValue="{Binding omabab1}">
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="Yes"/>
-                    </ComboBox>
-
-                    <TextBlock Text="Mother of Mother of Father?"/>
-                    <ComboBox x:Name="omomab1" SelectedValue="{Binding omomab1}">
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="Yes"/>
-                    </ComboBox>
-                </StackPanel>
-            </StackPanel>
-
-            <!-- Children -->
-            <StackPanel Orientation="Vertical" Spacing="10">
-                <StackPanel Orientation="Horizontal" Spacing="20">
-                    <TextBlock Text="Son?"/>
-                    <ComboBox x:Name="s1" SelectedValue="{Binding s1}">
-                        <ComboBoxItem Content="No"/>
-                    </ComboBox>
-
-                    <TextBlock Text="Daughter?"/>
-                    <ComboBox x:Name="s2" SelectedValue="{Binding s2}">
-                        <!-- Add all 50 options -->
-                        <ComboBoxItem Content="No"/>
-                        <ComboBoxItem Content="1"/>
-                        <ComboBoxItem Content="2"/>
-                        <ComboBoxItem Content="3"/>
-                        <ComboBoxItem Content="4"/>
-                        <ComboBoxItem Content="5"/>
-                        <ComboBoxItem Content="6"/>
-                        <ComboBoxItem Content="7"/>
-                        <ComboBoxItem Content="8"/>
-                        <ComboBoxItem Content="9"/>
-                        <ComboBoxItem Content="10"/>
-                        <ComboBoxItem Content="11"/>
-                        <ComboBoxItem Content="12"/>
-                        <ComboBoxItem Content="13"/>
-                        <ComboBoxItem Content="14"/>
-                        <ComboBoxItem Content="15"/>
-                        <ComboBoxItem Content="16"/>
-                        <ComboBoxItem Content="17"/>
-                        <ComboBoxItem Content="18"/>
-                        <ComboBoxItem Content="19"/>
-                        <ComboBoxItem Content="20"/>
-                        <ComboBoxItem Content="21"/>
-                        <ComboBoxItem Content="22"/>
-                        <ComboBoxItem Content="23"/>
-                        <ComboBoxItem Content="24"/>
-                        <ComboBoxItem Content="25"/>
-                        <ComboBoxItem Content="26"/>
-                        <ComboBoxItem Content="27"/>
-                        <ComboBoxItem Content="28"/>
-                        <ComboBoxItem Content="29"/>
-                        <ComboBoxItem Content="30"/>
-                        <ComboBoxItem Content="31"/>
-                        <ComboBoxItem Content="32"/>
-                        <ComboBoxItem Content="33"/>
-                        <ComboBoxItem Content="34"/>
-                        <ComboBoxItem Content="35"/>
-                        <ComboBoxItem Content="36"/>
-                        <ComboBoxItem Content="37"/>
-                        <ComboBoxItem Content="38"/>
-                        <ComboBoxItem Content="39"/>
-                        <ComboBoxItem Content="40"/>
-                        <ComboBoxItem Content="41"/>
-                        <ComboBoxItem Content="42"/>
-                        <ComboBoxItem Content="43"/>
-                        <ComboBoxItem Content="44"/>
-                        <ComboBoxItem Content="45"/>
-                        <ComboBoxItem Content="46"/>
-                        <ComboBoxItem Content="47"/>
-                        <ComboBoxItem Content="48"/>
-                        <ComboBoxItem Content="49"/>
-                    </ComboBox>
-                </StackPanel>
-
-                <!-- Repeat same pattern for all s3, s4 ... s26 exactly like HTML -->
-                <!-- Example: -->
-                <StackPanel Orientation="Horizontal" Spacing="20">
-                    <TextBlock Text="Son of Son?"/>
-                    <ComboBox x:Name="s3" SelectedValue="{Binding s3}">
-                        <ComboBoxItem Content="No"/>
-                    </ComboBox>
-
-                    <TextBlock Text="Daughter of Son?"/>
-                    <ComboBox x:Name="s4" SelectedValue="{Binding s4}">
-                        <ComboBoxItem Content="No"/>
-                    </ComboBox>
-                </StackPanel>
-
-                <!-- Continue for s5 ... s26 exactly as per HTML -->
-            </StackPanel>
+            <Border Height="2" Background="#CCCCCC" Margin="0,10"/>
 
             <!-- Special Cases -->
-            <StackPanel Orientation="Vertical" Spacing="10">
-                <CheckBox Content="One relative died before distribution (Monaskhat)" x:Name="grouphalat_monaskha" IsChecked="{Binding grouphalat_monaskha}"/>
-                <CheckBox Content="Offspring of Predeceased Son/Daughter (Wasiyyah Wajibah)" x:Name="grouphalat_wasyawagba" IsChecked="{Binding grouphalat_wasyawagba}"/>
-                <CheckBox Content="Fetus / Unborn Child/ren" x:Name="grouphalat_haml" IsChecked="{Binding grouphalat_haml}"/>
-                <CheckBox Content="Disappeared / Missing Person" x:Name="grouphalat_mafkood" IsChecked="{Binding grouphalat_mafkood}"/>
-            </StackPanel>
+            <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="15">
+                <StackPanel Spacing="10">
+                    <CheckBox x:Name="grouphalat_5" Content="One relative died before distribution of estate (i.e. consecutive deaths/Monaskhat) ?"/>
+                    <CheckBox x:Name="grouphalat_1" Content="Offspring of Predeceased Son/Daughter? (i.e. obligatory will/Wasiyyah Wajibah)"/>
+                    <StackPanel x:Name="egaza22" Orientation="Horizontal" Visibility="Collapsed">
+                        <TextBlock Text="Do heirs accept will more than 1/3?" Foreground="Green" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <ComboBox x:Name="wagbaeradya" SelectedIndex="0" Width="100">
+                            <ComboBoxItem Content="No"/>
+                            <ComboBoxItem Content="Yes"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <CheckBox x:Name="grouphalat_2" Content="Fetus / Unborn Child/ren ?"/>
+                    <CheckBox x:Name="grouphalat_4" Content="Disappeared / Missing Person ?"/>
+                </StackPanel>
+            </Border>
 
-            <!-- School / Law -->
-            <TextBlock Text="School Or Law" FontSize="20" FontWeight="Bold"/>
-            <StackPanel Orientation="Vertical" Spacing="5">
-                <RadioButton Content="Majority" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=gm}"/>
-                <RadioButton Content="Hanafi" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=nf}"/>
-                <RadioButton Content="Maliki" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=mk}"/>
-                <RadioButton Content="Shafi" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=sh}"/>
-                <RadioButton Content="Hanbali" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=bl}"/>
-                <RadioButton Content="Egypt" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=eg}"/>
-                <RadioButton Content="KSA" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=sa}"/>
-                <RadioButton Content="Algeria" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=dz}"/>
-                <RadioButton Content="Morocco" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ma}"/>
-                <RadioButton Content="Jordan" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=jo}"/>
-                <RadioButton Content="Emirates" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ae}"/>
-                <RadioButton Content="Oman" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=om}"/>
-                <RadioButton Content="Kuwait" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=kw}"/>
-                <RadioButton Content="Tunisia" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=tn}"/>
-            </StackPanel>
+            <!-- School Or Law -->
+            <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="15">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="School Or Law:" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center"/>
+             
+                    <Grid RowSpacing="10" ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-            <!-- Submit -->
-            <Button Content="Calculate Inheritance" Command="{Binding CalculateCommand}" Background="#d5a569" Foreground="White" FontSize="18" Padding="10"/>
+                        <!-- Row 0: Majority -->
+                        <RadioButton x:Name="gm" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Majority" GroupName="mazaheb" IsChecked="True" HorizontalAlignment="Center"/>
+
+                        <!-- Row 1: Hanafi, Maliki -->
+                        <RadioButton x:Name="radio3" Grid.Row="1" Grid.Column="0" Content="Hanafi" GroupName="mazaheb"/>
+                        <RadioButton x:Name="radio2" Grid.Row="1" Grid.Column="1" Content="Maliki" GroupName="mazaheb"/>
+
+                        <!-- Row 2: Shafi, Hanbali -->
+                        <RadioButton x:Name="radio1" Grid.Row="2" Grid.Column="0" Content="Shafi" GroupName="mazaheb"/>
+                        <RadioButton x:Name="radio4" Grid.Row="2" Grid.Column="1" Content="Hanbali" GroupName="mazaheb"/>
+                    </Grid>
+
+                    <!--<Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Name="radio5" Grid.Column="0" Content="🇪🇬 Egypt" GroupName="mazaheb"/>
+                        <RadioButton x:Name="radio6" Grid.Column="1" Content="🇸🇦 KSA" GroupName="mazaheb"/>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Name="radio7" Grid.Column="0" Content="🇩🇿 Algeria" GroupName="mazaheb"/>
+                        <RadioButton x:Name="radio8" Grid.Column="1" Content="🇲🇦 Morocco" GroupName="mazaheb"/>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Name="radio9" Grid.Column="0" Content="🇯🇴 Jordan" GroupName="mazaheb"/>
+                        <RadioButton x:Name="radio10" Grid.Column="1" Content="🇦🇪 Emirates" GroupName="mazaheb"/>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <RadioButton x:Name="radio11" Grid.Column="0" Content="🇴🇲 Oman" GroupName="mazaheb"/>
+                        <RadioButton x:Name="radio12" Grid.Column="1" Content="🇰🇼 Kuwait" GroupName="mazaheb"/>
+                    </Grid>
+
+                    <RadioButton x:Name="radio13" Content="🇹🇳 Tunisia" GroupName="mazaheb"/>
+                    -->
+                </StackPanel>
+            </Border>
+
+            <!-- Submit Button -->
+            <Button x:Name="insert2" Content="Calculate Inheritance" Background="#d5a569" Foreground="White" 
+                    FontSize="18" Padding="20,10" HorizontalAlignment="Center" Margin="0,20,0,0"/>
 
         </StackPanel>
     </ScrollViewer>
