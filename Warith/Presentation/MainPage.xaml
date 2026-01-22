@@ -3,127 +3,262 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:local="using:Warith.Presentation"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
-      xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:toolkit="using:Uno.Toolkit.UI"
       xmlns:um="using:Uno.Material"
       NavigationCacheMode="Required"
       Background="{ThemeResource BackgroundBrush}">
     <ScrollViewer>
-        <StackPanel Padding="20" Spacing="15">
+        <StackPanel Padding="20" Spacing="10">
 
-            <!-- Gender Selection -->
+            <!-- Gender -->
             <TextBlock Text="Gender" FontSize="20" FontWeight="Bold"/>
             <StackPanel Orientation="Horizontal" Spacing="20">
-                <RadioButton Content="Female" GroupName="Gender" Tag="ontha" x:Name="FemaleRadio"/>
-                <RadioButton Content="Male" GroupName="Gender" Tag="zakar" x:Name="MaleRadio" IsChecked="True"/>
+                <RadioButton Content="Female" GroupName="gender" x:Name="lll"
+                             IsChecked="{Binding gender, Mode=TwoWay, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ontha}"/>
+                <RadioButton Content="Male" GroupName="gender" x:Name="kj"
+                             IsChecked="{Binding gender, Mode=TwoWay, Converter={StaticResource StringToBoolConverter}, ConverterParameter=zakar}"/>
             </StackPanel>
 
-            <!-- Debts and Total Amount -->
-            <TextBlock Text="Debt?" FontWeight="SemiBold"/>
-            <TextBox x:Name="DebtInput" PlaceholderText="Enter debts"/>
+            <!-- Debt & Total amount -->
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <StackPanel>
+                    <TextBox x:Name="dyoon" Text="{Binding dyoon, Mode=TwoWay}" PlaceholderText="Debt?"/>
+                    <TextBlock Text="Debt?" FontSize="12"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBox x:Name="floos" Text="{Binding floos, Mode=TwoWay}" PlaceholderText="Total amount?"/>
+                    <TextBlock Text="Total amount?" FontSize="12"/>
+                </StackPanel>
+            </StackPanel>
 
-            <TextBlock Text="Total Amount?" FontWeight="SemiBold"/>
-            <TextBox x:Name="TotalAmountInput" PlaceholderText="Enter total money"/>
+            <!-- Wills -->
+            <TextBlock Text="Will?" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Spacing="10" Width="100">
+                <ComboBox x:Name="eradyya1" ItemsSource="{Binding Wills}" Text="{Binding Inheritance.Will1, Mode=TwoWay}" Width="80"/>
+                <ComboBox x:Name="eradyya2" ItemsSource="{Binding Wills}" Text="{Binding Inheritance.Will2, Mode=TwoWay}" Width="80"/>
+                <ComboBox x:Name="eradyya3" ItemsSource="{Binding Wills}" Text="{Binding Inheritance.Will3, Mode=TwoWay}" Width="80"/>
+            </StackPanel>
+            <TextBlock Text="ex: 1/3 , 1/4 etc »»" FontSize="12" Foreground="Gray"/>
 
-            <!-- Will Inputs -->
-            <TextBlock Text="Will(s)" FontSize="20" FontWeight="Bold"/>
-            <Grid ColumnSpacing="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <!-- ComboBox -->
-                <AutoSuggestBox Grid.Column="0"
-                    Header="First will"
-                    ItemsSource="{Binding Wills}"
-                    PlaceholderText="Choose or type (e.g. 1/3)"
-                    Text="{Binding Inheritance.Will1, Mode=TwoWay}" />
+            <!-- Accept will more than 1/3 -->
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <TextBlock Text="Do heirs accept will more than 1/3?" Foreground="Green" Visibility="{Binding ShowEgaza, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <ComboBox x:Name="agazo" SelectedIndex="{Binding agazo}" Width="60">
+                    <ComboBoxItem Content="No" />
+                    <ComboBoxItem Content="Yes" />
+                </ComboBox>
+            </StackPanel>
 
-                <AutoSuggestBox Grid.Column="1"
-                    Header="Second will"
-                    ItemsSource="{Binding Wills}"
-                    PlaceholderText="Choose or type (e.g. 1/3)"
-                    Text="{Binding Inheritance.Will2, Mode=TwoWay}" />
+            <!-- Spouses -->
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <TextBlock Text="Spouses:"/>
+                <ComboBox x:Name="zawgat" SelectedValue="{Binding zawgat}">
+                    <ComboBoxItem Content="No" />
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                    <ComboBoxItem Content="4"/>
+                </ComboBox>
+            </StackPanel>
 
-                <AutoSuggestBox Grid.Column="2"
-                    Header="Third will"
-                    ItemsSource="{Binding Wills}"
-                    PlaceholderText="Choose or type (e.g. 1/3)"
-                    Text="{Binding Inheritance.Will3, Mode=TwoWay}" />
-            </Grid>
-
-
-            <TextBlock Text="Do heirs accept will more than 1/3?" FontWeight="SemiBold"/>
-            <ComboBox x:Name="AcceptWillCombo">
-                <ComboBoxItem Content="No" Tag="0" IsSelected="True"/>
-                <ComboBoxItem Content="Yes" Tag="1"/>
-            </ComboBox>
-
-            <!-- Spouse Selection -->
-            <TextBlock Text="Spouse(s)" FontSize="20" FontWeight="Bold"/>
-            <ComboBox x:Name="SpousesCountCombo">
-                <ComboBoxItem Content="No" Tag="0" IsSelected="True"/>
-                <ComboBoxItem Content="1" Tag="1"/>
-                <ComboBoxItem Content="2" Tag="2"/>
-                <ComboBoxItem Content="3" Tag="3"/>
-                <ComboBoxItem Content="4" Tag="4"/>
-            </ComboBox>
+            <!-- Husband/Wife alive -->
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <StackPanel>
+                    <TextBlock Text="Is Husband alive?" />
+                    <ComboBox x:Name="u41" SelectedValue="{Binding u41}">
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="Yes"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Is Wife alive?" />
+                    <ComboBox x:Name="u43" SelectedValue="{Binding u43}">
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="Yes"/>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
 
             <!-- Parents -->
-            <TextBlock Text="Parents Alive?" FontSize="20" FontWeight="Bold"/>
             <StackPanel Orientation="Horizontal" Spacing="20">
                 <StackPanel>
-                    <TextBlock Text="Mother"/>
-                    <ComboBox x:Name="MotherAliveCombo">
-                        <ComboBoxItem Content="No" Tag="no" IsSelected="True"/>
-                        <ComboBoxItem Content="Yes" Tag="yes"/>
+                    <TextBlock Text="Is Mother alive?"/>
+                    <ComboBox x:Name="om1" SelectedValue="{Binding om1}">
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="Yes"/>
                     </ComboBox>
                 </StackPanel>
                 <StackPanel>
-                    <TextBlock Text="Father"/>
-                    <ComboBox x:Name="FatherAliveCombo">
-                        <ComboBoxItem Content="No" Tag="no" IsSelected="True"/>
-                        <ComboBoxItem Content="Yes" Tag="yes"/>
+                    <TextBlock Text="Is Father alive?"/>
+                    <ComboBox x:Name="ab1" SelectedValue="{Binding ab1}">
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="Yes"/>
                     </ComboBox>
                 </StackPanel>
             </StackPanel>
 
-            <!-- Children Example -->
-            <TextBlock Text="Children" FontSize="20" FontWeight="Bold"/>
-            <StackPanel Orientation="Horizontal" Spacing="20">
-                <StackPanel>
-                    <TextBlock Text="Son"/>
-                    <ComboBox x:Name="SonCombo">
-                        <ComboBoxItem Content="No" Tag="no" IsSelected="True"/>
-                        <ComboBoxItem Content="1" Tag="1"/>
-                        <ComboBoxItem Content="2" Tag="2"/>
-                        <ComboBoxItem Content="3" Tag="3"/>
+            <!-- Ancestors -->
+            <StackPanel Orientation="Vertical" Spacing="10">
+                <StackPanel Orientation="Horizontal" Spacing="20">
+                    <TextBlock Text="Mother of Mother?"/>
+                    <ComboBox x:Name="omom1" SelectedValue="{Binding omom1}">
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="Yes"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Father of Father?"/>
+                    <ComboBox x:Name="abab1" SelectedValue="{Binding abab1}">
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="Yes"/>
                     </ComboBox>
                 </StackPanel>
-                <StackPanel>
-                    <TextBlock Text="Daughter"/>
-                    <ComboBox x:Name="DaughterCombo">
-                        <ComboBoxItem Content="No" Tag="no" IsSelected="True"/>
-                        <ComboBoxItem Content="1" Tag="1"/>
-                        <ComboBoxItem Content="2" Tag="2"/>
-                        <ComboBoxItem Content="3" Tag="3"/>
+
+                <StackPanel Orientation="Horizontal" Spacing="20">
+                    <TextBlock Text="Father of Father of Father?"/>
+                    <ComboBox x:Name="ababab1" SelectedValue="{Binding ababab1}">
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="Yes"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Mother of Mother of Mother?"/>
+                    <ComboBox x:Name="omomom1" SelectedValue="{Binding omomom1}">
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="Yes"/>
                     </ComboBox>
                 </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Spacing="20">
+                    <TextBlock Text="Mother of Father?"/>
+                    <ComboBox x:Name="omab1" SelectedValue="{Binding omab1}">
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="Yes"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Mother of Father of Father?"/>
+                    <ComboBox x:Name="omabab1" SelectedValue="{Binding omabab1}">
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="Yes"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Mother of Mother of Father?"/>
+                    <ComboBox x:Name="omomab1" SelectedValue="{Binding omomab1}">
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="Yes"/>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Children -->
+            <StackPanel Orientation="Vertical" Spacing="10">
+                <StackPanel Orientation="Horizontal" Spacing="20">
+                    <TextBlock Text="Son?"/>
+                    <ComboBox x:Name="s1" SelectedValue="{Binding s1}">
+                        <ComboBoxItem Content="No"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Daughter?"/>
+                    <ComboBox x:Name="s2" SelectedValue="{Binding s2}">
+                        <!-- Add all 50 options -->
+                        <ComboBoxItem Content="No"/>
+                        <ComboBoxItem Content="1"/>
+                        <ComboBoxItem Content="2"/>
+                        <ComboBoxItem Content="3"/>
+                        <ComboBoxItem Content="4"/>
+                        <ComboBoxItem Content="5"/>
+                        <ComboBoxItem Content="6"/>
+                        <ComboBoxItem Content="7"/>
+                        <ComboBoxItem Content="8"/>
+                        <ComboBoxItem Content="9"/>
+                        <ComboBoxItem Content="10"/>
+                        <ComboBoxItem Content="11"/>
+                        <ComboBoxItem Content="12"/>
+                        <ComboBoxItem Content="13"/>
+                        <ComboBoxItem Content="14"/>
+                        <ComboBoxItem Content="15"/>
+                        <ComboBoxItem Content="16"/>
+                        <ComboBoxItem Content="17"/>
+                        <ComboBoxItem Content="18"/>
+                        <ComboBoxItem Content="19"/>
+                        <ComboBoxItem Content="20"/>
+                        <ComboBoxItem Content="21"/>
+                        <ComboBoxItem Content="22"/>
+                        <ComboBoxItem Content="23"/>
+                        <ComboBoxItem Content="24"/>
+                        <ComboBoxItem Content="25"/>
+                        <ComboBoxItem Content="26"/>
+                        <ComboBoxItem Content="27"/>
+                        <ComboBoxItem Content="28"/>
+                        <ComboBoxItem Content="29"/>
+                        <ComboBoxItem Content="30"/>
+                        <ComboBoxItem Content="31"/>
+                        <ComboBoxItem Content="32"/>
+                        <ComboBoxItem Content="33"/>
+                        <ComboBoxItem Content="34"/>
+                        <ComboBoxItem Content="35"/>
+                        <ComboBoxItem Content="36"/>
+                        <ComboBoxItem Content="37"/>
+                        <ComboBoxItem Content="38"/>
+                        <ComboBoxItem Content="39"/>
+                        <ComboBoxItem Content="40"/>
+                        <ComboBoxItem Content="41"/>
+                        <ComboBoxItem Content="42"/>
+                        <ComboBoxItem Content="43"/>
+                        <ComboBoxItem Content="44"/>
+                        <ComboBoxItem Content="45"/>
+                        <ComboBoxItem Content="46"/>
+                        <ComboBoxItem Content="47"/>
+                        <ComboBoxItem Content="48"/>
+                        <ComboBoxItem Content="49"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Repeat same pattern for all s3, s4 ... s26 exactly like HTML -->
+                <!-- Example: -->
+                <StackPanel Orientation="Horizontal" Spacing="20">
+                    <TextBlock Text="Son of Son?"/>
+                    <ComboBox x:Name="s3" SelectedValue="{Binding s3}">
+                        <ComboBoxItem Content="No"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Daughter of Son?"/>
+                    <ComboBox x:Name="s4" SelectedValue="{Binding s4}">
+                        <ComboBoxItem Content="No"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Continue for s5 ... s26 exactly as per HTML -->
+            </StackPanel>
+
+            <!-- Special Cases -->
+            <StackPanel Orientation="Vertical" Spacing="10">
+                <CheckBox Content="One relative died before distribution (Monaskhat)" x:Name="grouphalat_monaskha" IsChecked="{Binding grouphalat_monaskha}"/>
+                <CheckBox Content="Offspring of Predeceased Son/Daughter (Wasiyyah Wajibah)" x:Name="grouphalat_wasyawagba" IsChecked="{Binding grouphalat_wasyawagba}"/>
+                <CheckBox Content="Fetus / Unborn Child/ren" x:Name="grouphalat_haml" IsChecked="{Binding grouphalat_haml}"/>
+                <CheckBox Content="Disappeared / Missing Person" x:Name="grouphalat_mafkood" IsChecked="{Binding grouphalat_mafkood}"/>
             </StackPanel>
 
             <!-- School / Law -->
-            <TextBlock Text="School or Law" FontSize="20" FontWeight="Bold"/>
+            <TextBlock Text="School Or Law" FontSize="20" FontWeight="Bold"/>
             <StackPanel Orientation="Vertical" Spacing="5">
-                <RadioButton Content="Majority" GroupName="School" Tag="gm" IsChecked="True"/>
-                <RadioButton Content="Hanafi" GroupName="School" Tag="nf"/>
-                <RadioButton Content="Maliki" GroupName="School" Tag="mk"/>
-                <RadioButton Content="Shafi" GroupName="School" Tag="sh"/>
-                <RadioButton Content="Hanbali" GroupName="School" Tag="bl"/>
+                <RadioButton Content="Majority" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=gm}"/>
+                <RadioButton Content="Hanafi" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=nf}"/>
+                <RadioButton Content="Maliki" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=mk}"/>
+                <RadioButton Content="Shafi" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=sh}"/>
+                <RadioButton Content="Hanbali" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=bl}"/>
+                <RadioButton Content="Egypt" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=eg}"/>
+                <RadioButton Content="KSA" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=sa}"/>
+                <RadioButton Content="Algeria" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=dz}"/>
+                <RadioButton Content="Morocco" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ma}"/>
+                <RadioButton Content="Jordan" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=jo}"/>
+                <RadioButton Content="Emirates" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=ae}"/>
+                <RadioButton Content="Oman" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=om}"/>
+                <RadioButton Content="Kuwait" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=kw}"/>
+                <RadioButton Content="Tunisia" GroupName="mazaheb" IsChecked="{Binding mazaheb, Converter={StaticResource StringToBoolConverter}, ConverterParameter=tn}"/>
             </StackPanel>
 
-            <!-- Submit Button -->
-            <Button Content="Calculate Inheritance" x:Name="CalculateButton"
-                Background="#d5a569" Foreground="White" FontSize="18" Padding="10"/>
+            <!-- Submit -->
+            <Button Content="Calculate Inheritance" Command="{Binding CalculateCommand}" Background="#d5a569" Foreground="White" FontSize="18" Padding="10"/>
+
         </StackPanel>
     </ScrollViewer>
 </Page>
