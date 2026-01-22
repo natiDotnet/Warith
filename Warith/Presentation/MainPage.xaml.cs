@@ -1,4 +1,4 @@
-﻿namespace Warith.Presentation;
+namespace Warith.Presentation;
 
 public sealed partial class MainPage : Page
 {
@@ -63,23 +63,20 @@ public sealed partial class MainPage : Page
 
     private void ShowMaleFields()
     {
-        // Show wife-related fields (m41, m42, m43, m44)
-        m41.Visibility = Visibility.Visible;
-        zawgat.Visibility = Visibility.Visible;
+        // Show wife panel
+        WifePanel.Visibility = Visibility.Visible;
         
-        // Hide husband-related fields (u41, u42, u43)
-        u41.Visibility = Visibility.Collapsed;
-        zawg1.Visibility = Visibility.Collapsed;
+        // Hide husband panel
+        HusbandPanel.Visibility = Visibility.Collapsed;
     }
 
     private void ShowFemaleFields()
     {
-        // Hide wife-related fields
-        m41.Visibility = Visibility.Collapsed;
-        zawgat.Visibility = Visibility.Collapsed;
+        // Hide wife panel
+        WifePanel.Visibility = Visibility.Collapsed;
         
-        // Show husband-related fields
-        u41.Visibility = Visibility.Visible;
+        // Show husband panel
+        HusbandPanel.Visibility = Visibility.Visible;
         zawg1.Visibility = Visibility.Visible;
     }
 

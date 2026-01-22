@@ -8,7 +8,13 @@
       NavigationCacheMode="Required"
       Background="{ThemeResource BackgroundBrush}">
     
-    <ScrollViewer>
+    <Grid Background="{ThemeResource BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0">
         <StackPanel x:Name="MainContainer" Padding="10,10,10,10" Spacing="15" MaxWidth="1200">
 
             <VisualStateManager.VisualStateGroups>
@@ -243,7 +249,7 @@
                             </ComboBox>
                         </StackPanel>
                         <StackPanel x:Name="HusbandPanel" Orientation="Horizontal" Spacing="5" Visibility="Collapsed">
-                            <TextBlock x:Name="u41" Text="Is Husband alive?" VerticalAlignment="Center" MinWidth="120"/>
+                            <TextBlock x:Name="u41" Text="Is Husband alive?" VerticalAlignment="Center" MinWidth="100"/>
                             <ComboBox x:Name="zawg1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150" Visibility="Collapsed">
                                 <ComboBoxItem Content="No"/>
                                 <ComboBoxItem Content="Yes"/>
@@ -647,10 +653,14 @@
                 </StackPanel>
             </Border>
 
-            <!-- Submit Button -->
-            <Button x:Name="insert2" Content="Calculate Inheritance" Background="#d5a569" Foreground="White" 
-                    FontSize="18" Padding="20,10" HorizontalAlignment="Center" Margin="0,20,0,0"/>
-
         </StackPanel>
-    </ScrollViewer>
+        </ScrollViewer>
+
+        <!-- Fixed Bottom Footer -->
+        <Border Grid.Row="1" Padding="20" Background="{ThemeResource BackgroundBrush}" BorderBrush="Transparent" BorderThickness="0">
+            <Button x:Name="insert2" Content="Calculate Inheritance" Background="#d5a569" Foreground="White" BorderThickness="0"
+                    FontSize="18" Padding="20,10" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+        </Border>
+
+    </Grid>
 </Page>
