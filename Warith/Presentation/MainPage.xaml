@@ -154,8 +154,9 @@
                             <!-- Make each will field pair stack vertically -->
                             <Setter Target="Will1Panel.Orientation" Value="Vertical"/>
                             <Setter Target="Will2Panel.Orientation" Value="Vertical"/>
-                                <Setter Target="Will3Panel.Orientation" Value="Vertical"/>
+                            <Setter Target="Will3Panel.Orientation" Value="Vertical"/>
                             
+                            <Setter Target="DadDadDadPanel.(Grid.ColumnSpan)" Value="2" />
                     
                         </VisualState.Setters>
                     </VisualState>
@@ -177,13 +178,13 @@
                 <StackPanel Spacing="10">
                     <!-- Gender -->
                     <TextBlock Text="Gender" FontWeight="Bold" VerticalAlignment="Center" MinWidth="100"/>
-                    <StackPanel Orientation="Horizontal" Spacing="10">
+                    <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
                         <RadioButton x:Name="lll" Content="Female" GroupName="gender"/>
                         <RadioButton x:Name="kj" Content="Male" GroupName="gender" IsChecked="True"/>
                     </StackPanel>
 
                     <!-- Debt and Total Amount -->
-                        <Grid x:Name="DebtAmountPanel" ColumnSpacing="15">
+                        <Grid x:Name="DebtAmountPanel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -203,7 +204,7 @@
                         </Grid>
 
                         <!-- Will Fields - All in one row with labels on left -->
-                    <Grid x:Name="WillsPanel" ColumnSpacing="15">
+                    <Grid x:Name="WillsPanel" ColumnSpacing="15" RowSpacing="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -240,7 +241,7 @@
                 <StackPanel Spacing="10">
 
                         <!-- Spouse Row -->
-                        <Grid x:Name="SpousePanel" ColumnSpacing="15">
+                        <Grid x:Name="SpousePanel" ColumnSpacing="15" RowSpacing="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -270,7 +271,7 @@
                      
 
                         <!-- Parents -->
-                        <Grid x:Name="ParentsPanel" ColumnSpacing="15">
+                        <Grid x:Name="ParentsPanel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -297,7 +298,7 @@
                        
 
                     <!-- Grandparents Row 1 -->
-                        <Grid x:Name="Grandparents1Panel" ColumnSpacing="15">
+                        <Grid x:Name="Grandparents1Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -325,7 +326,7 @@
 
                     <!-- Grandparents Row 2 -->
 
-                        <Grid x:Name="Grandparents2Panel" ColumnSpacing="15">
+                        <Grid x:Name="Grandparents2Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -345,7 +346,7 @@
 
                         <!-- Grandparents Row 3 -->
 
-                        <Grid x:Name="Grandparents3Panel" ColumnSpacing="15">
+                        <Grid x:Name="Grandparents3Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -371,7 +372,7 @@
                         </Grid>
 
                         <!-- Grandparents Row 4 -->
-                        <Grid x:Name="Grandparents4Panel" ColumnSpacing="15">
+                        <Grid x:Name="Grandparents4Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -403,7 +404,7 @@
                 <StackPanel Spacing="5">
                     
                     <!-- Row 1: Son and Daughter -->
-                        <Grid x:Name="Row1Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row1Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -477,7 +478,7 @@
   
 
                     <!-- Row 2: Son of Son and Daughter of Son -->
-                        <Grid x:Name="Row2Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row2Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -502,7 +503,7 @@
                        
 
                     <!-- Row 3: Son of son of son and Daughter of son of son -->
-                        <Grid x:Name="Row3Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row3Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -526,7 +527,7 @@
                         </Grid>
 
                         <!-- Row 4: Full Brother and Full Sister -->
-                        <Grid x:Name="Row4Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row4Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -550,7 +551,7 @@
                         </Grid>
 
                         <!-- Row 5: Paternal Brother and Paternal Sister -->
-                        <Grid x:Name="Row5Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row5Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -574,7 +575,7 @@
                         </Grid>
 
                         <!-- Row 6: Uterine Brother and Uterine Sister -->
-                        <Grid x:Name="Row6Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row6Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -598,7 +599,7 @@
                         </Grid>
 
                         <!-- Row 7: Son of Full Brother and Son of Paternal Brother -->
-                        <Grid x:Name="Row7Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row7Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -622,7 +623,7 @@
                         </Grid>
 
                         <!-- Row 8: Son of son of Full Brother and Son of son of Paternal Brother -->
-                        <Grid x:Name="Row8Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row8Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -646,7 +647,7 @@
                         </Grid>
 
                         <!-- Row 9: Full Brother of Father and Paternal Brother of Father -->
-                        <Grid x:Name="Row9Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row9Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -670,7 +671,7 @@
                         </Grid>
 
                         <!-- Row 10: Son of Full Brother of Father and Son of Paternal Brother of Father -->
-                        <Grid x:Name="Row10Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row10Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -694,7 +695,7 @@
                         </Grid>
 
                         <!-- Row 11: Son of Son of Full Brother of Father and Son of Son of Paternal Brother of Father -->
-                        <Grid x:Name="Row11Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row11Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -718,7 +719,7 @@
                         </Grid>
 
                         <!-- Row 12: Full brother of Grand Father and Paternal Brother of Grand Father -->
-                        <Grid x:Name="Row12Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row12Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -743,7 +744,7 @@
 
                         <!-- Row 13: Son of Full brother of Grand Father and Son of Paternal Brother of Grand Father -->
 
-                        <Grid x:Name="Row13Panel" ColumnSpacing="15">
+                        <Grid x:Name="Row13Panel" ColumnSpacing="15" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
