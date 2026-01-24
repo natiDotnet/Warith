@@ -136,13 +136,20 @@ public class ApiCallService : IApiCallService
             { "s24", MapIntToYesNo(inheritance.PaternalBrotherOfGrandFather) },
             { "s25", MapIntToYesNo(inheritance.SonsOfFullBrotherOfGrandFather) },
             { "s26", MapIntToYesNo(inheritance.SonsOfPaternalBrotherOfGrandFather) },
-            { "grouphalat[monaskha]", inheritance.PredeceasedRelative == true ? "yes" : "no" },
-            { "grouphalat[wasyawagba]", inheritance.OffspringOfPredeceased == true ? "yes" : "no" },
-            { "grouphalat[haml]", inheritance.Fetus == true ? "yes" : "no" },
-            { "grouphalat[mafkood]", inheritance.MissingPerson == true ? "yes" : "no" },
             { "mazaheb", inheritance.SchoolOrLaw ?? "gm" },
             { "insert2", "Calculate Inheritance" }
         };
+
+        if (inheritance.PredeceasedRelative == true ||
+            inheritance.OffspringOfPredeceased == true ||
+            inheritance.Fetus == true ||
+            inheritance.MissingPerson == true)
+        {
+            dict.Add("grouphalat[monaskha]", inheritance.PredeceasedRelative == true ? "yes" : "no");
+            dict.Add("grouphalat[wasyawagba]", inheritance.OffspringOfPredeceased == true ? "yes" : "no");
+            dict.Add("grouphalat[haml]", inheritance.Fetus == true ? "yes" : "no");
+            dict.Add("grouphalat[mafkood]", inheritance.MissingPerson == true ? "yes" : "no");
+        }
 
         return dict;
     }
