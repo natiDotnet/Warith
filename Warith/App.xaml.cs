@@ -1,4 +1,5 @@
 using Uno.Resizetizer;
+using Warith.Services;
 
 namespace Warith;
 
@@ -74,7 +75,7 @@ public partial class App : Application
                 .ConfigureServices((context, services) =>
                 {
                     // TODO: Register your services
-                    //services.AddSingleton<IMyService, MyService>();
+                    services.AddSingleton<IApiCallService, ApiCallService>();
                 })
                 .UseNavigation(ReactiveViewModelMappings.ViewModelMappings, RegisterRoutes)
             );
