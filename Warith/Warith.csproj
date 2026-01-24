@@ -38,6 +38,8 @@
     </UnoFeatures>
   </PropertyGroup>
   <ItemGroup>
+    <UnoIcon Include="Assets\Icons\favicon.ico" />
+    <UnoSplashScreen Include="Assets\Splash\favicon.png" />
     <PackageReference Include="HtmlAgilityPack" />
   </ItemGroup>
 
