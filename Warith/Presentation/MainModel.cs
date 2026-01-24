@@ -46,8 +46,7 @@ public partial record MainModel
     public async ValueTask CalculateInheritance(InheritanceForm inheritance, CancellationToken cancellationToken)
     {
         Console.WriteLine("Calculating inheritance...");
-        var testData = Warith.Services.TestData.GetSeededFormData();
-        var result = await _apiCallService.CalculateInheritanceAsync(testData);
+        var result = await _apiCallService.CalculateInheritanceAsync(inheritance);
         // TODO: Handle result (e.g. show in UI or navigate)
         System.Diagnostics.Debug.WriteLine(result.ToString());
     }
