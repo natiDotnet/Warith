@@ -28,9 +28,11 @@ public partial record MainModel
         .Value(this, () => WillRules.AllowedFractions.ToImmutableList())
         .AsListFeed();
 
-    public IListFeed<int> Numbers => State
-        .Value(this, () => Enumerable.Range(0, 100).ToList().ToImmutableList())
-        .AsListFeed();
+    //public IListFeed<int> Numbers => State
+    //    .Value(this, () => Enumerable.Range(0, 100).ToList().ToImmutableList())
+    //    .AsListFeed();
+
+    public IReadOnlyList<int> Numbers => Enumerable.Range(1, 49).ToList();
 
     public ICommand Calculate => Command.Create(b => b.Given(Inheritance).Then(CalculateInheritance));
     public IState<InheritanceForm> Inheritance => State<InheritanceForm>.Value(this, () => new InheritanceForm());
