@@ -9,18 +9,28 @@
       xmlns:um="using:Uno.Material"
       Background="{ThemeResource BackgroundBrush}">
 
+  <Page.Resources>
+    <local:HideIfEmptyConverter x:Key="HideIfEmptyConverter" />
+  </Page.Resources>
+
   <Grid utu:SafeArea.Insets="VisibleBounds">
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
       <RowDefinition />
     </Grid.RowDefinitions>
-    <utu:NavigationBar Content="Inheritance Results" />
+    <Image Grid.Row="0" 
+           Source="https://almwareeth.com/images/faredat_almwareeth.webp" 
+           HorizontalAlignment="Center" 
+           Stretch="Fill" 
+           MaxHeight="150" 
+           Margin="10"/>
+    <utu:NavigationBar Grid.Row="1" Content="Inheritance Results"/>
 
-    <Grid Grid.Row="1" 
+    <Grid Grid.Row="2" 
           Margin="16"
           HorizontalAlignment="Center"
-          MaxWidth="800"
-          >
+          MaxWidth="800">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
@@ -41,7 +51,8 @@
       <Border Grid.Row="1"
               Background="{ThemeResource SurfaceContainerHighBrush}" 
               CornerRadius="8,8,0,0" 
-              Padding="12,8">
+              Padding="12,8"
+              Visibility="{Binding WarethResponse.Result, Converter={StaticResource HideIfEmptyConverter}}">
         <Grid>
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -64,7 +75,8 @@
                 ItemsSource="{Binding WarethResponse.Result}" 
                 SelectionMode="None"
                 Background="{ThemeResource SurfaceContainerBrush}"
-                Padding="0,0,0,8">
+                Padding="0,0,0,8"
+                Visibility="{Binding WarethResponse.Result, Converter={StaticResource HideIfEmptyConverter}}">
         <ListView.ItemTemplate>
           <DataTemplate>
             <Grid Padding="12,16">

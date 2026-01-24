@@ -11,11 +11,19 @@
 
     <Grid Background="{ThemeResource BackgroundBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="0">
+        <Image Source="https://almwareeth.com/images/faredat_almwareeth.webp" 
+               Grid.Row="0"
+               HorizontalAlignment="Center" 
+               Stretch="Fill" 
+               MaxHeight="150" 
+               Margin="10"/>
+
+        <ScrollViewer Grid.Row="1">
             <StackPanel x:Name="MainContainer" Padding="10,10,10,10" Spacing="15" MaxWidth="1200">
 
                 <VisualStateManager.VisualStateGroups>
@@ -870,7 +878,7 @@
         </ScrollViewer>
 
         <!-- Fixed Bottom Footer -->
-        <Border Grid.Row="1" Padding="20" Background="{ThemeResource BackgroundBrush}" BorderBrush="Transparent" BorderThickness="0">
+        <Border Grid.Row="2" Padding="20" Background="{ThemeResource BackgroundBrush}" BorderBrush="Transparent" BorderThickness="0">
             <Button x:Name="insert2" Content="Calculate Inheritance" Background="#d5a569" Foreground="White" BorderThickness="0"
                     Command="{Binding Calculate}"
                     FontSize="18" Padding="20,10" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
