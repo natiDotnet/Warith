@@ -7,12 +7,14 @@ using System.Xml.Linq;
 using HtmlAgilityPack;
 using static Warith.Services.ApiCallService;
 
+using Warith.Models;
+
 namespace Warith.Services;
 
 public interface IApiCallService
 {
-    Task<List<HeirShare>> CalculateInheritanceAsync(Dictionary<string, string> formData);
-    Task<List<HeirShare>> CalculateInheritanceAsync(InheritanceForm inheritance);
+    Task<WarethResponse> CalculateInheritanceAsync(Dictionary<string, string> formData);
+    Task<WarethResponse> CalculateInheritanceAsync(InheritanceForm inheritance);
 }
 
 public class ApiCallService : IApiCallService
@@ -43,7 +45,7 @@ public class ApiCallService : IApiCallService
         );
     }
 
-    public async Task<List<HeirShare>> CalculateInheritanceAsync(Dictionary<string, string> formData)
+    public async Task<WarethResponse> CalculateInheritanceAsync(Dictionary<string, string> formData)
     {
         // -------- FIRST REQUEST --------
         using var request = new HttpRequestMessage(HttpMethod.Post, BaseUrl)
@@ -77,16 +79,16 @@ public class ApiCallService : IApiCallService
         // -------- SECOND REQUEST (XAJAX) --------
         var xajaxResponse = await CallXajaxAsync(onClick);
 
-        return ParseXajaxTable(xajaxResponse);
+        return new WarethResponse(responseText ?? string.Empty, ParseXajaxTable(xajaxResponse));
     }
 
-    public Task<List<HeirShare>> CalculateInheritanceAsync(Warith.Models.InheritanceForm inheritance)
+    public Task<WarethResponse> CalculateInheritanceAsync(InheritanceForm inheritance)
     {
         var formData = MapToDictionary(inheritance);
         return CalculateInheritanceAsync(formData);
     }
 
-    private Dictionary<string, string> MapToDictionary(Warith.Models.InheritanceForm inheritance)
+    private Dictionary<string, string> MapToDictionary(InheritanceForm inheritance)
     {
         var dict = new Dictionary<string, string>
         {
@@ -230,12 +232,4 @@ public class ApiCallService : IApiCallService
 
         return heirs;
     }
-    public class HeirShare
-    {
-        public string Percent { get; set; }      // %25, %50, etc.
-        public string Share { get; set; }        // "1/4", "2/4" etc
-        public int Count { get; set; }           // number of heirs
-        public string Heir { get; set; }         // "Wife", "Mother", "Father"
-    }
-
 }

@@ -14,15 +14,99 @@
       <RowDefinition Height="Auto" />
       <RowDefinition />
     </Grid.RowDefinitions>
-    <utu:NavigationBar Content="Second Page" />
-    <StackPanel Grid.Row="1"
+    <utu:NavigationBar Content="Inheritance Results" />
+
+    <Grid Grid.Row="1" 
+          Margin="16"
           HorizontalAlignment="Center"
-          VerticalAlignment="Center">
-      <TextBlock Text="{Binding Entity.Name}"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Margin="8" />
-    </StackPanel>
+          MaxWidth="800"
+          >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <TextBlock Text="{Binding WarethResponse.Message}" 
+                 HorizontalAlignment="Center" 
+                 TextAlignment="Center"
+                 Margin="0,0,0,16" 
+                 FontSize="16" 
+                 FontWeight="SemiBold"
+                 TextWrapping="Wrap"
+                 Grid.Row="0"
+                 Width="800"/>
+
+      <!-- Table Header -->
+      <Border Grid.Row="1"
+              Background="{ThemeResource SurfaceContainerHighBrush}" 
+              CornerRadius="8,8,0,0" 
+              Padding="12,8">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <TextBlock Text="Percent" FontWeight="Bold" HorizontalAlignment="Center" />
+          <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+            <TextBlock Text="Share" FontWeight="Bold" HorizontalAlignment="Center" />
+            <TextBlock Text="(each one)" FontSize="10" Foreground="Red" HorizontalAlignment="Center" />
+          </StackPanel>
+          <TextBlock Grid.Column="2" Text="Count" FontWeight="Bold" HorizontalAlignment="Center" />
+          <TextBlock Grid.Column="3" Text="Heir Name" FontWeight="Bold" HorizontalAlignment="Left" Margin="12,0,0,0" />
+        </Grid>
+      </Border>
+
+      <!-- Results List -->
+      <ListView Grid.Row="2" 
+                ItemsSource="{Binding WarethResponse.Result}" 
+                SelectionMode="None"
+                Background="{ThemeResource SurfaceContainerBrush}"
+                Padding="0,0,0,8">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <Grid Padding="12,16">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              
+              <StackPanel Orientation="Horizontal" 
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center">
+                <TextBlock Text="{Binding Percent}" 
+                           Foreground="{ThemeResource PrimaryBrush}" 
+                           FontWeight="SemiBold" />
+                <TextBlock Text="%" 
+                           Foreground="{ThemeResource PrimaryBrush}" 
+                           FontWeight="SemiBold" />
+              </StackPanel>
+              
+              <TextBlock Grid.Column="1" 
+                         Text="{Binding Share}" 
+                         HorizontalAlignment="Center" 
+                         VerticalAlignment="Center" />
+              
+              <TextBlock Grid.Column="2" 
+                         Text="{Binding Count}" 
+                         HorizontalAlignment="Center" 
+                         VerticalAlignment="Center" />
+              
+              <TextBlock Grid.Column="3" 
+                         Text="{Binding Heir}" 
+                         HorizontalAlignment="Left" 
+                         VerticalAlignment="Center" 
+                         Margin="12,0,0,0"
+                         FontWeight="Medium" />
+            </Grid>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </Grid>
 
   </Grid>
 </Page>

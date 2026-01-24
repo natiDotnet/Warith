@@ -1,5 +1,3 @@
 namespace Warith.Presentation;
 
-public partial record SecondModel(Entity Entity)
-{
-}
+public partial record SecondModel(WarethResponse WarethResponse);

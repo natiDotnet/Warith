@@ -47,8 +47,8 @@ public partial record MainModel
     {
         Console.WriteLine("Calculating inheritance...");
         var result = await _apiCallService.CalculateInheritanceAsync(inheritance);
-        // TODO: Handle result (e.g. show in UI or navigate)
-        System.Diagnostics.Debug.WriteLine(result.ToString());
+        
+        await _navigator.NavigateViewModelAsync<SecondModel>(this, data: result);
     }
 
 }
