@@ -16,11 +16,11 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Image Source="https://almwareeth.com/images/faredat_almwareeth.webp" 
+        <Image Source="https://almwareeth.com/images/faredat_almwareeth.webp"
                Grid.Row="0"
-               HorizontalAlignment="Center" 
-               Stretch="Fill" 
-               MaxHeight="150" 
+               HorizontalAlignment="Center"
+               Stretch="Fill"
+               MaxHeight="150"
                Margin="10"/>
 
         <ScrollViewer Grid.Row="1">

@@ -143,16 +143,16 @@ public record InheritanceForm
     public int? SonsOfPaternalBrotherOfGrandFather { get; init; }
 
     // grouphalat[monaskha]
-    public bool? PredeceasedRelative { get; init; }
+    public bool PredeceasedRelative { get; init; }
 
     // grouphalat[wasyawagba]
-    public bool? OffspringOfPredeceased { get; init; }
+    public bool OffspringOfPredeceased { get; init; }
 
     // grouphalat (haml)
-    public bool? Fetus { get; init; }
+    public bool Fetus { get; init; }
 
     // grouphalat (mafkood)
-    public bool? MissingPerson { get; init; }
+    public bool MissingPerson { get; init; }
 
     // mazaheb
     public string SchoolOrLaw { get; init; }
