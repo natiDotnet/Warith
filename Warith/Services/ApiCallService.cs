@@ -53,33 +53,41 @@ public class ApiCallService : IApiCallService
             Content = new FormUrlEncodedContent(formData)
         };
         request.Headers.Referrer = new Uri("https://almwareeth.com/islamic-inheritance-calculator");
+        try
+        {
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
 
-        var response = await _httpClient.SendAsync(request);
-        response.EnsureSuccessStatusCode();
+            var html = await response.Content.ReadAsStringAsync();
+            var doc = new HtmlDocument();
+            doc.LoadHtml(html);
 
-        var html = await response.Content.ReadAsStringAsync();
-        var doc = new HtmlDocument();
-        doc.LoadHtml(html);
+            // Extract the response text
+            var responseText = doc
+                .GetElementbyId("responsehaml")
+                ?.InnerText
+                ?.Trim();
 
-        // Extract the response text
-        var responseText = doc
-            .GetElementbyId("responsehaml")
-            ?.InnerText
-            ?.Trim();
+            // Extract the xajax onclick
+            var onClick = doc
+                .DocumentNode
+                .SelectSingleNode("//span[@class='btnhesab']//a")
+                ?.GetAttributeValue("onclick", "");
 
-        // Extract the xajax onclick
-        var onClick = doc
-            .DocumentNode
-            .SelectSingleNode("//span[@class='btnhesab']//a")
-            ?.GetAttributeValue("onclick", "");
+            if (string.IsNullOrWhiteSpace(onClick))
+                throw new InvalidOperationException("onclick not found");
 
-        if (string.IsNullOrWhiteSpace(onClick))
-            throw new InvalidOperationException("onclick not found");
+            // -------- SECOND REQUEST (XAJAX) --------
+            var xajaxResponse = await CallXajaxAsync(onClick);
 
-        // -------- SECOND REQUEST (XAJAX) --------
-        var xajaxResponse = await CallXajaxAsync(onClick);
+            return new WarethResponse(responseText ?? string.Empty, ParseXajaxTable(xajaxResponse));
 
-        return new WarethResponse(responseText ?? string.Empty, ParseXajaxTable(xajaxResponse));
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return new WarethResponse($"Error calculating inheritance {e.InnerException?.Message}", new List<HeirShare>());
+        }
     }
 
     public Task<WarethResponse> CalculateInheritanceAsync(InheritanceForm inheritance)
