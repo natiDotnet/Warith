@@ -9,6 +9,15 @@
       NavigationCacheMode="Required"
       Background="{ThemeResource BackgroundBrush}">
 
+    <Page.Resources>
+        <Style x:Key="FormLabelStyle" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="MinHeight" Value="40"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+    </Page.Resources>
+
     <Grid Background="{ThemeResource BackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -45,23 +54,23 @@
 
                                 <Setter Target="WifePanel.(Grid.Row)" Value="0" />
                                 <Setter Target="WifePanel.(Grid.ColumnSpan)" Value="2" />
-                                <Setter Target="DebtPanel.(Grid.Row)" Value="1" />
-                                <Setter Target="DebtPanel.(Grid.Column)" Value="0" />
-                                <Setter Target="DebtPanel.(Grid.ColumnSpan)" Value="2" />
+                                <Setter Target="HusbandPanel.(Grid.Row)" Value="1" />
+                                <Setter Target="HusbandPanel.(Grid.Column)" Value="0" />
+                                <Setter Target="HusbandPanel.(Grid.ColumnSpan)" Value="2" />
 
-                                <Setter Target="MotherPanel.(Grid.Row)" Value="0" />
+                                <!--<Setter Target="MotherPanel.(Grid.Row)" Value="0" />
                                 <Setter Target="MotherPanel.(Grid.ColumnSpan)" Value="2" />
                                 <Setter Target="FatherPanel.(Grid.Row)" Value="1" />
                                 <Setter Target="FatherPanel.(Grid.Column)" Value="0" />
-                                <Setter Target="FatherPanel.(Grid.ColumnSpan)" Value="2" />
+                                <Setter Target="FatherPanel.(Grid.ColumnSpan)" Value="2" />-->
 
-                                <Setter Target="MomMomPanel.(Grid.Row)" Value="0" />
+                                <!--<Setter Target="MomMomPanel.(Grid.Row)" Value="0" />
                                 <Setter Target="MomMomPanel.(Grid.ColumnSpan)" Value="2" />
                                 <Setter Target="DadDadPanel.(Grid.Row)" Value="1" />
                                 <Setter Target="DadDadPanel.(Grid.Column)" Value="0" />
-                                <Setter Target="DadDadPanel.(Grid.ColumnSpan)" Value="2" />
+                                <Setter Target="DadDadPanel.(Grid.ColumnSpan)" Value="2" />-->
 
-                                <Setter Target="MomMomMomPanel.(Grid.Row)" Value="0" />
+                                <!--<Setter Target="MomMomMomPanel.(Grid.Row)" Value="0" />
                                 <Setter Target="MomMomMomPanel.(Grid.ColumnSpan)" Value="2" />
                                 <Setter Target="MomDadPanel.(Grid.Row)" Value="1" />
                                 <Setter Target="MomDadPanel.(Grid.Column)" Value="0" />
@@ -154,7 +163,7 @@
                                 <Setter Target="SonOfFullBrotherOfGrandFatherPanel.(Grid.ColumnSpan)" Value="2" />
                                 <Setter Target="SonOfPaternalBrotherOfGrandFatherPanel.(Grid.Row)" Value="1" />
                                 <Setter Target="SonOfPaternalBrotherOfGrandFatherPanel.(Grid.Column)" Value="0" />
-                                <Setter Target="SonOfPaternalBrotherOfGrandFatherPanel.(Grid.ColumnSpan)" Value="2" />
+                                <Setter Target="SonOfPaternalBrotherOfGrandFatherPanel.(Grid.ColumnSpan)" Value="2" />-->
 
                                 <!-- Make will fields stack vertically on narrow screens - REMOVED for Always One Row -->
                                 <!-- <Setter Target="WillsPanel.Orientation" Value="Vertical"/> -->
@@ -165,7 +174,7 @@
                                 <Setter Target="Will2Panel.Orientation" Value="Vertical"/>
                                 <Setter Target="Will3Panel.Orientation" Value="Vertical"/>
 
-                                <Setter Target="DadDadDadPanel.(Grid.ColumnSpan)" Value="2" />
+                                <Setter Target="MomMomDadPanel.(Grid.ColumnSpan)" Value="2" />
 
                             </VisualState.Setters>
                         </VisualState>
@@ -207,7 +216,7 @@
                                 <TextBox x:Name="floos" Text="{Binding Inheritance.TotalAmount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" MinWidth="150" InputScope="Number" BeforeTextChanging="OnNumberOnlyBeforeTextChanging"/>
                             </StackPanel>
                             <StackPanel x:Name="DebtPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Debt?" VerticalAlignment="Center" MinWidth="80"/>
+                                <TextBlock Text="Debt?" Style="{StaticResource FormLabelStyle}"/>
                                 <TextBox x:Name="dyoon" Text="{Binding Inheritance.Debt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="150" HorizontalAlignment="Stretch" InputScope="Number" BeforeTextChanging="OnNumberOnlyBeforeTextChanging"/>
                             </StackPanel>
                         </Grid>
@@ -301,7 +310,7 @@
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="MotherPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
                                 <TextBlock Text="Is Mother alive?" VerticalAlignment="Center" MinWidth="100"/>
-                                <ComboBox x:Name="om1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <ComboBox x:Name="om1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           SelectedValue="{Binding Inheritance.IsMotherAlive, Mode=TwoWay}"
                                           SelectedValuePath="Tag">
                                     <ComboBoxItem Content="No" Tag="False"/>
@@ -310,7 +319,7 @@
                             </StackPanel>
                             <StackPanel x:Name="FatherPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
                                 <TextBlock Text="Is Father alive?" VerticalAlignment="Center" MinWidth="100"/>
-                                <ComboBox x:Name="ab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <ComboBox x:Name="ab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           SelectedValue="{Binding Inheritance.IsFatherAlive, Mode=TwoWay}"
                                           SelectedValuePath="Tag">
                                     <ComboBoxItem Content="No" Tag="False"/>
@@ -331,8 +340,8 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="MomMomPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Mother of Mother?" VerticalAlignment="Center" MinWidth="120"/>
-                                <ComboBox x:Name="omom1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Maternal Grandmother?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="omom1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                                 SelectedValue="{Binding Inheritance.IsGrandMotherMaternalAlive, Mode=TwoWay}"
                                                 SelectedValuePath="Tag">
                                     <ComboBoxItem Content="No" Tag="False"/>
@@ -340,8 +349,8 @@
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="DadDadPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Father of Father?" VerticalAlignment="Center" MinWidth="120"/>
-                                <ComboBox x:Name="abab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Grandfather?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="abab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                                 SelectedValue="{Binding Inheritance.IsGrandFatherPaternalAlive, Mode=TwoWay}"
                                                 SelectedValuePath="Tag">
                                     <ComboBoxItem Content="No" Tag="False"/>
@@ -353,25 +362,7 @@
 
                         <!-- Grandparents Row 2 -->
 
-                        <Grid x:Name="Grandparents2Panel" ColumnSpacing="15" RowSpacing="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel x:Name="DadDadDadPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Father of Father of Father?" VerticalAlignment="Center" MinWidth="160"/>
-                                <ComboBox x:Name="ababab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
-                                          SelectedValue="{Binding Inheritance.IsGreatGrandFatherPaternalAlive, Mode=TwoWay}"
-                                          SelectedValuePath="Tag">
-                                    <ComboBoxItem Content="No" Tag="False"/>
-                                    <ComboBoxItem Content="Yes" Tag="True"/>
-                                </ComboBox>
-                            </StackPanel>
-                        </Grid>
+                        
 
                         <!-- Grandparents Row 3 -->
 
@@ -384,20 +375,20 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <StackPanel x:Name="MomMomMomPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Mother of mother of mother?" VerticalAlignment="Center" MinWidth="160"/>
-                                <ComboBox x:Name="omomom1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
-                                           SelectedValue="{Binding Inheritance.IsGreatGrandMotherMaternalAlive, Mode=TwoWay}"
-                                           SelectedValuePath="Tag">
+                            <StackPanel x:Name="MomDadPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
+                                <TextBlock Text="Paternal Grandmother?" VerticalAlignment="Center" MinWidth="50"/>
+                                <ComboBox x:Name="omab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
+                                          SelectedValue="{Binding Inheritance.IsGrandMotherPaternalAlive, Mode=TwoWay}"
+                                          SelectedValuePath="Tag">
                                     <ComboBoxItem Content="No" Tag="False"/>
                                     <ComboBoxItem Content="Yes" Tag="True"/>
                                 </ComboBox>
                             </StackPanel>
-                            <StackPanel x:Name="MomDadPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Mother of Father?" VerticalAlignment="Center" MinWidth="120"/>
-                                <ComboBox x:Name="omab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
-                                          SelectedValue="{Binding Inheritance.IsGrandMotherPaternalAlive, Mode=TwoWay}"
-                                          SelectedValuePath="Tag">
+                            <StackPanel x:Name="MomMomMomPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
+                                <TextBlock Text="Maternal Great-Grandmother?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="omomom1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
+                                           SelectedValue="{Binding Inheritance.IsGreatGrandMotherMaternalAlive, Mode=TwoWay}"
+                                           SelectedValuePath="Tag">
                                     <ComboBoxItem Content="No" Tag="False"/>
                                     <ComboBoxItem Content="Yes" Tag="True"/>
                                 </ComboBox>
@@ -414,19 +405,39 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <StackPanel x:Name="MomDadDadPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Mother of father of father?" VerticalAlignment="Center" MinWidth="160"/>
-                                <ComboBox x:Name="omabab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                            <StackPanel x:Name="DadDadDadPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
+                                <TextBlock Text="Paternal Great-Grandfather?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="ababab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
+                                          SelectedValue="{Binding Inheritance.IsGreatGrandFatherPaternalAlive, Mode=TwoWay}"
+                                          SelectedValuePath="Tag">
+                                    <ComboBoxItem Content="No" Tag="False"/>
+                                    <ComboBoxItem Content="Yes" Tag="True"/>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel x:Name="MomDadDadPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
+                                <TextBlock Text="Paternal Great-Grandmother (from Grandfather)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="omabab1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           SelectedValue="{Binding Inheritance.IsMotherOfFatherOfFatherAlive, Mode=TwoWay}"
                                           SelectedValuePath="Tag">
                                     <ComboBoxItem Content="No" Tag="False"/>
                                     <ComboBoxItem Content="Yes" Tag="True"/>
                                 </ComboBox>
                             </StackPanel>
-                            <StackPanel x:Name="MomMomDadPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Mother of mother of father?" VerticalAlignment="Center" MinWidth="160"/>
+                        </Grid>
+
+                        <Grid x:Name="Grandparents2Panel" ColumnSpacing="15" RowSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel x:Name="MomMomDadPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
+                                <TextBlock Text="Paternal Great-Grandmother (from Grandmother)?" VerticalAlignment="Center" MinWidth="150"/>
                                 <!-- omabab2 == omabab1 -->
-                                <ComboBox x:Name="omabab2" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <ComboBox x:Name="omabab2" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           SelectedValue="{Binding Inheritance.IsMotherOfMotherOfFatherAlive, Mode=TwoWay}"
                                           SelectedValuePath="Tag">
                                     <ComboBoxItem Content="No" Tag="False"/>
@@ -453,16 +464,16 @@
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="SonPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
                                 <TextBlock Text="Son?" VerticalAlignment="Center" MinWidth="100"/>
-                                <ComboBox x:Name="s1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <ComboBox x:Name="s1" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
-                                          SelectedValue="{Binding Inheritance.Sons}">
+                                          SelectedValue="{Binding Inheritance.Sons, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="DaughterPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
                                 <TextBlock Text="Daughter?" VerticalAlignment="Center" MinWidth="100"/>
-                                <ComboBox x:Name="s2" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <ComboBox x:Name="s2" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
-                                          SelectedValue="{Binding Inheritance.Daughters}">
+                                          SelectedValue="{Binding Inheritance.Daughters, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                         </Grid>
@@ -479,15 +490,15 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="SonOfSonPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of Son?" VerticalAlignment="Center" MinWidth="100"/>
-                                <ComboBox x:Name="s3" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Grandson (from Son)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s3" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfSon, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="DaughterOfSonPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Daughter of Son?" VerticalAlignment="Center" MinWidth="140"/>
-                                <ComboBox x:Name="s4" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Granddaughter (from Son)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s4" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.DaughtersOfSon, Mode=TwoWay}">
                                 </ComboBox>
@@ -506,15 +517,15 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="SonOfSonOfSonPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of son of son?" VerticalAlignment="Center" MinWidth="140"/>
-                                <ComboBox x:Name="s5" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Great-Grandson (from Son)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s5" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfSonOfSon, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="DaughterOfSonOfSonPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Daughter of son of son?" VerticalAlignment="Center" MinWidth="180"/>
-                                <ComboBox x:Name="s6" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Great-Granddaughter (from Son)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s6" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.DaughtersOfSonOfSon, Mode=TwoWay}">
                                 </ComboBox>
@@ -533,14 +544,14 @@
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="FullBrotherPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
                                 <TextBlock Text="Full Brother?" VerticalAlignment="Center" MinWidth="100"/>
-                                <ComboBox x:Name="s7" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <ComboBox x:Name="s7" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.FullBrothers, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="FullSisterPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
                                 <TextBlock Text="Full Sister?" VerticalAlignment="Center" MinWidth="100"/>
-                                <ComboBox x:Name="s8" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <ComboBox x:Name="s8" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.FullSisters, Mode=TwoWay}">
                                 </ComboBox>
@@ -558,15 +569,15 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="PaternalBrotherPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Paternal Brother?" VerticalAlignment="Center" MinWidth="120"/>
-                                <ComboBox x:Name="s9" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Half-Brother?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s9" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.PaternalBrothers, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="PaternalSisterPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Paternal Sister?" VerticalAlignment="Center" MinWidth="120"/>
-                                <ComboBox x:Name="s10" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Half-Sister?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s10" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.PaternalSisters, Mode=TwoWay}">
                                 </ComboBox>
@@ -584,15 +595,15 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="UterineBrotherPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Uterine Brother?" VerticalAlignment="Center" MinWidth="120"/>
-                                <ComboBox x:Name="s11" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Maternal Half-Brother?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s11" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.UterineBrothers, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="UterineSisterPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Uterine Sister?" VerticalAlignment="Center" MinWidth="120"/>
-                                <ComboBox x:Name="s12" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Maternal Half-Sister?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s12" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.UterineSisters, Mode=TwoWay}">
                                 </ComboBox>
@@ -610,15 +621,15 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="SonOfFullBrotherPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of Full Brother?" VerticalAlignment="Center" MinWidth="140"/>
-                                <ComboBox x:Name="s13" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Nephew (Full Brother's Son)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s13" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfFullBrother, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="SonOfPaternalBrotherPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of Paternal Brother?" VerticalAlignment="Center" MinWidth="160"/>
-                                <ComboBox x:Name="s14" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Nephew (Paternal Half-Brother's Son)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s14" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfPaternalBrother, Mode=TwoWay}">
                                 </ComboBox>
@@ -636,15 +647,15 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="SonOfSonOfFullBrotherPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of son of Full Brother?" VerticalAlignment="Center" MinWidth="180"/>
-                                <ComboBox x:Name="s15" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Great-Nephew (Full Brother's Grandson)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s15" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfSonOfFullBrother, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="SonOfSonOfPaternalBrotherPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of son of Paternal Brother?" VerticalAlignment="Center" MinWidth="200"/>
-                                <ComboBox x:Name="s16" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Great-Nephew (Paternal Half-Brother's Grandson)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s16" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfSonOfPaternalBrother, Mode=TwoWay}">
                                 </ComboBox>
@@ -662,15 +673,15 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="FullBrotherOfFatherPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Full Brother of Father?" VerticalAlignment="Center" MinWidth="160"/>
-                                <ComboBox x:Name="s17" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Uncle (Full)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s17" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.FullBrothersOfFather, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="PaternalBrotherOfFatherPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Paternal Brother of Father?" VerticalAlignment="Center" MinWidth="180"/>
-                                <ComboBox x:Name="s18" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Uncle (Half)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s18" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.PaternalBrothersOfFather, Mode=TwoWay}">
                                 </ComboBox>
@@ -688,15 +699,15 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="SonOfFullBrotherOfFatherPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of Full Brother of Father?" VerticalAlignment="Center" MinWidth="200"/>
-                                <ComboBox x:Name="s19" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Cousin (Full Uncle's Son)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s19" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfFullBrotherOfFather, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="SonOfPaternalBrotherOfFatherPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of Paternal Brother of Father?" VerticalAlignment="Center" MinWidth="220"/>
-                                <ComboBox x:Name="s20" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Cousin (Half Uncle's Son)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s20" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfPaternalBrotherOfFather, Mode=TwoWay}">
                                 </ComboBox>
@@ -714,15 +725,15 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="SonOfSonOfFullBrotherOfFatherPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of Son of Full Brother of Father?" VerticalAlignment="Center" MinWidth="220"/>
-                                <ComboBox x:Name="s21" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Great-Cousin (Full Uncle's Grandson)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s21" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfSonOfFullBrotherOfFather, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="SonOfSonOfPaternalBrotherOfFatherPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of Son of Paternal Brother of Father?" VerticalAlignment="Center" MinWidth="240"/>
-                                <ComboBox x:Name="s22" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Great-Cousin (Half Uncle's Grandson)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s22" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfSonOfPaternalBrotherOfFather, Mode=TwoWay}">
                                 </ComboBox>
@@ -740,15 +751,15 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="FullBrotherOfGrandFatherPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Full brother of Grand Father?" VerticalAlignment="Center" MinWidth="180"/>
-                                <ComboBox x:Name="s23" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Great-Uncle (Full)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s23" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.FullBrotherOfGrandFather, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="PaternalBrotherOfGrandFatherPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Paternal Brother of Grand Father?" VerticalAlignment="Center" MinWidth="200"/>
-                                <ComboBox x:Name="s24" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Great-Uncle (Half)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s24" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.PaternalBrotherOfGrandFather, Mode=TwoWay}">
                                 </ComboBox>
@@ -767,15 +778,15 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <StackPanel x:Name="SonOfFullBrotherOfGrandFatherPanel" Grid.Row="0" Grid.Column="0" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of Full brother of Grand Father?" VerticalAlignment="Center" MinWidth="220"/>
-                                <ComboBox x:Name="s25" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Great-Cousin (once removed, Full)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s25" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfFullBrotherOfGrandFather, Mode=TwoWay}">
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel x:Name="SonOfPaternalBrotherOfGrandFatherPanel" Grid.Row="0" Grid.Column="1" Orientation="Vertical" Spacing="5">
-                                <TextBlock Text="Son of Paternal Brother of Grand Father?" VerticalAlignment="Center" MinWidth="240"/>
-                                <ComboBox x:Name="s26" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="150"
+                                <TextBlock Text="Paternal Great-Cousin (once removed, Half)?" VerticalAlignment="Center" MinWidth="100"/>
+                                <ComboBox x:Name="s26" SelectedIndex="0" HorizontalAlignment="Stretch" MinWidth="100"
                                           ItemsSource="{Binding Numbers}" MaxDropDownHeight="250"
                                           SelectedValue="{Binding Inheritance.SonsOfPaternalBrotherOfGrandFather, Mode=TwoWay}">
                                 </ComboBox>
