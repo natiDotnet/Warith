@@ -32,37 +32,37 @@ public record InheritanceForm
     public int? NumberOfWives { get; init; }
 
     // u41
-    public bool? IsHusbandAlive { get; init; }
+    public bool IsHusbandAlive { get; init; }
 
     // m41
-    //public bool? IsWifeAlive { get; init; }
+    public bool IsWifeAlive { get; init; }
 
     // om1
-    public bool? IsMotherAlive { get; init; }
+    public bool IsMotherAlive { get; init; }
 
     // ab1
-    public bool? IsFatherAlive { get; init; }
+    public bool IsFatherAlive { get; init; }
 
     // omom1
-    public bool? IsGrandMotherMaternalAlive { get; init; }
+    public bool IsGrandMotherMaternalAlive { get; init; }
 
     // abab1
-    public bool? IsGrandFatherPaternalAlive { get; init; }
+    public bool IsGrandFatherPaternalAlive { get; init; }
 
     // ababab1
-    public bool? IsGreatGrandFatherPaternalAlive { get; init; }
+    public bool IsGreatGrandFatherPaternalAlive { get; init; }
 
     // omomom1
-    public bool? IsGreatGrandMotherMaternalAlive { get; init; }
+    public bool IsGreatGrandMotherMaternalAlive { get; init; }
 
     // omab1
-    public bool? IsGrandMotherPaternalAlive { get; init; }
+    public bool IsGrandMotherPaternalAlive { get; init; }
 
     // omabab1
-    public bool? IsMotherOfFatherOfFatherAlive { get; init; }
+    public bool IsMotherOfFatherOfFatherAlive { get; init; }
 
     // omomab1
-    public bool? IsMotherOfMotherOfFatherAlive { get; init; }
+    public bool IsMotherOfMotherOfFatherAlive { get; init; }
 
     // s1
     public int? Sons { get; init; }

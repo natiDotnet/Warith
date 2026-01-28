@@ -22,3 +22,45 @@ public class HideIfEmptyConverter : IValueConverter
         throw new NotImplementedException();
     }
 }
+
+public class IntToBoolConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, string language)
+    {
+        if (value is int i)
+        {
+            return i > 0;
+        }
+        return false;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, string language)
+    {
+        if (value is bool b)
+        {
+            return b ? 1 : 0;
+        }
+        return 0;
+    }
+}
+
+public class BooleanToVisibilityConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, string language)
+    {
+        if (value is bool b)
+        {
+            return b ? Visibility.Visible : Visibility.Collapsed;
+        }
+        return Visibility.Collapsed;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, string language)
+    {
+        if (value is Visibility v)
+        {
+            return v == Visibility.Visible;
+        }
+        return false;
+    }
+}

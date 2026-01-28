@@ -92,14 +92,14 @@ public sealed partial class MainPage : Page
         // Uncheck grouphalat_2 and grouphalat_4
         grouphalat_2.IsChecked = false;
         grouphalat_4.IsChecked = false;
-        // Show egaza22
-        egaza22.Visibility = Visibility.Visible;
+        // Show wagbaeradya
+        wagbaeradya.Visibility = Visibility.Visible;
     }
 
     private void OnWasyawagbaUnchecked(object sender, RoutedEventArgs e)
     {
-        // Hide egaza22
-        egaza22.Visibility = Visibility.Collapsed;
+        // Hide wagbaeradya
+        wagbaeradya.Visibility = Visibility.Collapsed;
     }
 
     private void OnHamlChecked(object sender, RoutedEventArgs e)
@@ -108,7 +108,7 @@ public sealed partial class MainPage : Page
         grouphalat_1.IsChecked = false;
         grouphalat_4.IsChecked = false;
         grouphalat_5.IsChecked = false;
-        egaza22.Visibility = Visibility.Collapsed;
+        wagbaeradya.Visibility = Visibility.Collapsed;
     }
 
     private void OnMafkoodChecked(object sender, RoutedEventArgs e)
@@ -117,7 +117,7 @@ public sealed partial class MainPage : Page
         grouphalat_1.IsChecked = false;
         grouphalat_2.IsChecked = false;
         grouphalat_5.IsChecked = false;
-        egaza22.Visibility = Visibility.Collapsed;
+        wagbaeradya.Visibility = Visibility.Collapsed;
     }
 
     private void ValidateWills()
@@ -129,14 +129,14 @@ public sealed partial class MainPage : Page
 
         var total = will1 + will2 + will3;
 
-        if (total > (1m / 3m))
-        {
-            egaza.Visibility = Visibility.Visible;
-        }
-        else
-        {
-            egaza.Visibility = Visibility.Collapsed;
-        }
+        //if (total > (1m / 3m))
+        //{
+        //    egaza.Visibility = Visibility.Visible;
+        //}
+        //else
+        //{
+        //    egaza.Visibility = Visibility.Collapsed;
+        //}
     }
 
     private decimal ParseFraction(string input)
