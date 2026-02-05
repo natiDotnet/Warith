@@ -6,6 +6,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:utu="using:Uno.Toolkit.UI"
+      xmlns:toolkit="using:Uno.Toolkit.UI"
       xmlns:um="using:Uno.Material"
       Background="{ThemeResource BackgroundBrush}">
 
@@ -40,13 +41,39 @@
       <RowDefinition Height="Auto" />
       <RowDefinition />
     </Grid.RowDefinitions>
-    <Image Grid.Row="0"
+
+    <toolkit:NavigationBar x:Name="NavBar" Grid.Row="0">
+        <toolkit:NavigationBar.Content>
+            <Image Source="ms-appx:///Assets/Splash/favicon.png"
+                   HorizontalAlignment="Left"
+                   Width="128"
+                   Height="40" />
+        </toolkit:NavigationBar.Content>
+        <toolkit:NavigationBar.PrimaryCommands>
+            <AppBarButton Label="Home" uen:Navigation.Request="!Main">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="Home" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="About" uen:Navigation.Request="!About">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="Help" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+            <AppBarButton Label="Contact" uen:Navigation.Request="!Contact">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="Contact" />
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </toolkit:NavigationBar.PrimaryCommands>
+    </toolkit:NavigationBar>
+
+    <Image Grid.Row="1"
            Source="https://almwareeth.com/images/faredat_almwareeth.webp"
            HorizontalAlignment="Center"
            Stretch="Fill"
            MaxHeight="150"
            Margin="10"/>
-    <utu:NavigationBar Grid.Row="1" Content="Inheritance Results"/>
 
     <Grid Grid.Row="2"
           Margin="16"

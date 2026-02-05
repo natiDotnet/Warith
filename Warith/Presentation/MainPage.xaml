@@ -21,18 +21,45 @@
     <Grid Background="{ThemeResource BackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <toolkit:NavigationBar x:Name="NavBar" Grid.Row="0">
+            <toolkit:NavigationBar.Content>
+                <Image Source="ms-appx:///Assets/Splash/favicon.png"
+                       HorizontalAlignment="Left"
+                       Width="128"
+                       Height="40" />
+            </toolkit:NavigationBar.Content>
+            <toolkit:NavigationBar.PrimaryCommands>
+                <AppBarButton Label="Home" uen:Navigation.Request="!Main">
+                    <AppBarButton.Icon>
+                        <SymbolIcon Symbol="Home" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton Label="About" uen:Navigation.Request="!About">
+                    <AppBarButton.Icon>
+                        <SymbolIcon Symbol="Help" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton Label="Contact" uen:Navigation.Request="!Contact">
+                    <AppBarButton.Icon>
+                        <SymbolIcon Symbol="Contact" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+            </toolkit:NavigationBar.PrimaryCommands>
+        </toolkit:NavigationBar>
+
         <Image Source="https://almwareeth.com/images/faredat_almwareeth.webp"
-               Grid.Row="0"
+               Grid.Row="1"
                HorizontalAlignment="Center"
                Stretch="Fill"
                MaxHeight="150"
                Margin="10"/>
 
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="2">
             <StackPanel x:Name="MainContainer" Padding="10,10,10,10" Spacing="15" MaxWidth="1200">
 
                 <VisualStateManager.VisualStateGroups>
@@ -190,7 +217,7 @@
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateManager.VisualStateGroups>
-
+                <!--<toolkit:NavigationBar Content="Calculator" MainCommandMode="Action"></toolkit:NavigationBar>-->
                 <!-- Gender Selection -->
                 <Border BorderBrush="#CCCCCC" BorderThickness="1" Padding="15">
                     <StackPanel Spacing="10">
@@ -826,7 +853,7 @@
         </ScrollViewer>
 
         <!-- Fixed Bottom Footer -->
-        <Border Grid.Row="2" Padding="20" Background="{ThemeResource BackgroundBrush}" BorderBrush="Transparent" BorderThickness="0">
+        <Border Grid.Row="3" Padding="20" Background="{ThemeResource BackgroundBrush}" BorderBrush="Transparent" BorderThickness="0">
             <Button x:Name="insert2" Content="Calculate Inheritance" Background="#d5a569" Foreground="White" BorderThickness="0"
                     Command="{Binding Calculate}"
                     FontSize="18" Padding="20,10" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>

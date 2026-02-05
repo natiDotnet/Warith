@@ -94,6 +94,8 @@ public partial class App : Application
         views.Register(
             new ViewMap(ViewModel: typeof(ShellModel)),
             new ViewMap<MainPage, MainModel>(),
+            new ViewMap<AboutPage, AboutModel>(),
+            new ViewMap<ContactPage, ContactModel>(),
             new DataViewMap<SecondPage, SecondModel, WarethResponse>()
         );
 
@@ -103,6 +105,8 @@ public partial class App : Application
                 [
                     new ("Main", View: views.FindByViewModel<MainModel>(), IsDefault:true),
                     new ("Second", View: views.FindByViewModel<SecondModel>()),
+                    new ("About", View: views.FindByViewModel<AboutModel>()),
+                    new ("Contact", View: views.FindByViewModel<ContactModel>()),
                 ]
             )
         );
